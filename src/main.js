@@ -2,6 +2,7 @@ import Vue from 'vue'
 import './plugins/axios'
 import './cube-ui'
 import App from './App.vue'
+import './assets/css/base.css'
 import Api from './assets/js/api';
 import BaseComponents from "./components/base";
 

@@ -1,0 +1,136 @@
+$primary-color = #409EFF;
+
+.widget-view.widget-view-imgshow {
+  padding: 0;
+  background: #f1f1f1;
+  border-bottom: none;
+}
+
+.widget-view.widget-view-button {
+  border-bottom: none;
+}
+
+.widget-view {
+  margin: 0;
+  padding: 10px;
+  background: #fff;
+  position: relative;
+  border-bottom: 1px solid #eee;
+
+  input[type='date'] {
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+
+    &::-webkit-clear-button {
+      display: none;
+    }
+  }
+
+  .wg-item {
+    display: flex;
+    line-height: 50px;
+  }
+
+  .wg-input, .wg-select {
+    width: 100%;
+    height: 40px;
+    margin: 5px 0;
+    color: #666;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    outline: none;
+    text-indent: 10px;
+    background: #fff;
+    transition: 0.3s;
+  }
+
+  .wg-title {
+    font-size: 14px;
+    margin-right: 10px;
+    color: #333;
+  }
+
+  .wg-checkbox {
+    .label {
+      float: left;
+      cursor: pointer;
+      position: relative;
+      margin-right: 10px;
+    }
+
+    .label span {
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .wg-checkbox-input:checked + span {
+      background-color: $primary-color;
+      border-color: $primary-color;
+      color: #fff;
+    }
+  }
+
+  .wg-switch {
+    .label {
+      display: flex;
+      cursor: pointer;
+    }
+
+    .wg-switch-core {
+      display: inline-block;
+      position: relative;
+      margin: 0;
+      width: 40px;
+      height: 20px;
+      border: 1px solid #dcdfe6;
+      outline: 0;
+      border-radius: 10px;
+      box-sizing: border-box;
+      background: #dcdfe6;
+      transition: border-color 0.3s, background-color 0.3s;
+    }
+
+    .wg-switch-core:after {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      border-radius: 100%;
+      transition: all 0.3s;
+      width: 16px;
+      height: 16px;
+      background-color: #fff;
+    }
+
+    .wg-switch-input:checked + span {
+      background-color: $primary-color;
+      border-color: $primary-color;
+      color: #fff;
+    }
+
+    .wg-switch-input:checked + span::after {
+      left: 100%;
+      margin-left: -17px;
+    }
+  }
+
+  .wg-button {
+    width: 90%;
+    margin: 15px 5%;
+    background: $primary-color;
+    color: #fff;
+    height: 46px;
+    line-height: 46px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    letter-spacing: 2px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 10px 3px #90c7ff;
+  }
+}
