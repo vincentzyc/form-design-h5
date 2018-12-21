@@ -3,11 +3,6 @@ $primary-color = #409EFF;
 .widget-view.widget-view-imgshow {
   padding: 0;
   background: #f1f1f1;
-  border-bottom: none;
-}
-
-.widget-view.widget-view-button {
-  border-bottom: none;
 }
 
 .widget-view {
@@ -15,7 +10,11 @@ $primary-color = #409EFF;
   padding: 10px;
   background: #fff;
   position: relative;
-  border-bottom: 1px solid #eee;
+
+  input::-webkit-input-placeholder {
+    color: #999;
+    opacity: 1;
+  }
 
   input[type='date'] {
     &::-webkit-inner-spin-button {
