@@ -1,0 +1,9 @@
+/* 重置cube-ui样式 */
+.cube-validator_invalid .cube-validator-msg {
+	line-height: initial;
+	margin-bottom: 5px;
+}
+.cube-validator_invalid .wg-input {
+	border-color: #e64340 !important
+}
+/* 重置cube-ui样式 end*/

@@ -6,7 +6,7 @@
 
 <script>
 // @ is an alias to /src
-import WidgetItems from "@/components/widget-items.vue";
+import WidgetItems from "@/components/widget-items";
 
 export default {
   name: "home",

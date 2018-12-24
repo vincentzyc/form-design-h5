@@ -1,9 +1,12 @@
 import Loading from "./loading"; // loading
+import ValidateCodeBtn from "./validate-code-btn"; // 验证码按钮
 
 const version = '1.0';
 const install = function(Vue) {
 
-	if (install.installed) return;
+  if (install.installed) return;
+  
+  Vue.component(ValidateCodeBtn.name, ValidateCodeBtn); //注册组件
 
 	Vue.$loading = Vue.prototype.$loading = Loading; //注册全局方法组件
 

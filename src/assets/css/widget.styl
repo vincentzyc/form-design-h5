@@ -5,7 +5,7 @@ $primary-color = #409EFF;
   background: #f1f1f1;
 }
 
-.widget-view {
+.widget-view /deep/ {
   margin: 0;
   padding: 10px;
   background: #fff;
@@ -47,7 +47,11 @@ $primary-color = #409EFF;
       transition: 0.3s;
 
       &:active {
-        opacity: 0.8;
+        opacity: 0.7;
+      }
+
+      &:disabled {
+        opacity: 0.7;
       }
     }
   }
