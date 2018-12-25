@@ -6,7 +6,7 @@
         <input class="wg-input" type="tel" maxlength="11" v-model="item.value" :placeholder="item.placeholder">
       </div>
     </div>
-    <div class="flex" v-if="item.showCode">
+    <div class="flex relative" v-if="item.showCode">
       <input placeholder="验证码" type="tel" maxlength="6" v-model="item.codeValue" class="wg-input flex-auto">
       <ValidateCodeBtn :phone="item.value"/>
     </div>

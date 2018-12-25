@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <template v-for="item in wgList">
       <div class="widget-view" :key="item.key" :class="{'widget-view-imgshow':item.type === 'imgshow','widget-view-button':item.type === 'button'}">
         <WgPhone v-if="item.type === 'phone'" :ref="item.key" :item="item"/>
@@ -17,7 +17,7 @@
 
         <div v-if="item.type === 'button'" :style="item.style">
           <div class="flex flex-center">
-            <button class="wg-button" @click="clickBtn(item)">{{item.btnText}}</button>
+            <button class="wg-button" :style="item.style.btnStyle" @click="clickBtn(item)">{{item.btnText}}</button>
           </div>
         </div>
 

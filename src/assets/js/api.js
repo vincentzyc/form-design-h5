@@ -68,11 +68,11 @@ export default {
 	 * @param name  name
 	 */
 	getUrlParam(name) {
-		var reg = new RegExp("(^|\\?|&)" + name + "=([^&|^#]*)");
+		var reg = new RegExp("([?&])" + name + "=([^&|^#]*)");
 		var l = window.location.href;
 		var i = l.indexOf("?");
 		if (i < 0) return null;
-		var str = l.slice(i + 1, l.length);
+		var str = l.slice(i, l.length);
 		if (str) {
 			var r = str.match(reg);
 			if (r) {
