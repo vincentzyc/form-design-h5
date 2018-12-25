@@ -1,5 +1,5 @@
 <template>
-  <div class="wg-item flex-wrap wg-checkbox" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="{margin:item.margin}">
+  <div class="wg-item flex-wrap wg-checkbox" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
     <div class="wg-title">{{item.title}}</div>
     <div class="flex-auto">
       <label class="label" v-for="(optionsItem, key) in item.options" :key="optionsItem + key">
@@ -13,6 +13,12 @@
 export default {
   props: {
     item: Object
+  },
+  methods: {
+    validate() {
+      if (Array.isArray(this.item.value) && this.item.value.length === 0 || this.item.value === '') return `请选择${this.item.title}`;
+      return true;
+    }
   }
 }
 </script>

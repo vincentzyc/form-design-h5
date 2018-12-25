@@ -9,20 +9,20 @@
         <WgSwitch v-if="item.type === 'switch'" :ref="item.key" :item="item"/>
         <WgDate v-if="item.type === 'date'" :ref="item.key" :item="item"/>
 
-        <div v-if="item.type === 'imgshow'" :style="{margin:item.margin}">
+        <div v-if="item.type === 'imgshow'" :style="item.style">
           <div class="flex flex-center">
             <img :src="item.value" alt="图片展示" width="100%">
           </div>
         </div>
 
-        <div v-if="item.type === 'button'" :style="{margin:item.margin}">
+        <div v-if="item.type === 'button'" :style="item.style">
           <div class="flex flex-center">
             <button class="wg-button" @click="clickBtn(item)">{{item.btnText}}</button>
           </div>
         </div>
 
-        <div v-if="item.type === 'staticText'" class="wg-staticText" :style="{margin:item.margin}">
-          <p class="text" :style="{textAlign:item.textAlign}">{{item.value}}</p>
+        <div v-if="item.type === 'staticText'" class="wg-staticText" :style="item.style">
+          <p :style="item.style">{{item.value}}</p>
         </div>
       </div>
     </template>
@@ -51,13 +51,12 @@ export default {
   },
   data() {
     return {
-
+      formData: {}
     };
   },
 
   methods: {
     clickBtn(e) {
-      // console.log(e);
       switch (e.btnType) {
         case "submit":
           this.clickSubmit();
@@ -66,22 +65,6 @@ export default {
         default:
           break;
       }
-    },
-    valiAllDate() {
-      let flag = true;
-      for (const item of this.wgList) {
-        if (!Array.isArray(this.$refs[item.key])) continue;
-        if (typeof this.$refs[item.key][0].validate !== 'function') continue;
-        let result = this.$refs[item.key][0].validate();
-        if (result !== true) {
-          this.$createToast({
-            txt: result,
-            type: 'txt'
-          }).show();
-          flag = false;
-        }
-      }
-      return flag;
     },
     clickSubmit() {
       if (!this.valiAllDate()) return;
@@ -92,6 +75,34 @@ export default {
       setTimeout(() => {
         this.$loading.close();
       }, 3000);
+    },
+    valiAllDate() {
+      let flag = true;
+      for (const item of this.wgList) {
+        if (!Array.isArray(this.$refs[item.key])) continue;
+        if (typeof this.$refs[item.key][0].validate !== 'function') {
+          this.formatParam(item);
+          continue;
+        };
+        let result = this.$refs[item.key][0].validate();
+        if (result === true) {
+          this.formatParam(item);
+          continue
+        };
+        this.$createToast({
+          time: 1500,
+          txt: result,
+          type: 'txt'
+        }).show();
+        flag = false;
+        break;
+      }
+      return flag;
+    },
+    formatParam(item) {
+      if (!item.hasOwnProperty("apiKey")) return;
+      if (item.type === 'phone' && item.showCode) this.formData[item.codeKey] = item.codeValue;
+      this.formData[item.apiKey] = item.value;
     },
     axiosPost() {
       this.$axios

@@ -86,7 +86,7 @@ export default {
 	 * @param {String} phone 手机号
 	 */
 	checkMobile(phone) {
-		if ((/^1[3-9]{10}$/.test(phone))) return true;
+		if ((/^1[3-9]\d{9}$/.test(phone))) return true;
 		return false;
 	},
 	/**

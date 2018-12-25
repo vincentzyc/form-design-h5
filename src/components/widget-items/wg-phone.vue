@@ -1,5 +1,5 @@
 <template>
-  <div class="wg-phone" :style="{margin:item.margin}">
+  <div class="wg-phone" :style="item.style">
     <div class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']">
       <div class="wg-title" v-show="item.showLabel">{{item.title}}</div>
       <div class="flex-auto">
