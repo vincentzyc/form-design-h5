@@ -59,22 +59,12 @@ export default {
     clickBtn(e) {
       switch (e.btnType) {
         case "submit":
-          this.clickSubmit();
+          this.$parent.clickSubmit();
           break;
 
         default:
           break;
       }
-    },
-    clickSubmit() {
-      if (!this.valiAllDate()) return;
-      this.$loading.open({
-        text: "正在提交...",
-        type: "sandglass"
-      });
-      setTimeout(() => {
-        this.$loading.close();
-      }, 3000);
     },
     valiAllDate() {
       let flag = true;
@@ -124,4 +114,5 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
 @require '../../assets/css/widget.styl';
+@require '../../assets/css/themes.styl';
 </style>

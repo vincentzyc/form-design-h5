@@ -1,6 +1,8 @@
 <template>
-  <div class="home" v-if="pageData">
-    <WidgetItems :wgList="pageData.list" :style="{background:pageData.config.background}"/>
+  <div class="wrapper" v-if="pageData" :style="{background:pageData.config.background}">
+    <img v-if="pageData.config.theme" :src="themeBanner" alt="banner" width="100%" class="banner">
+    <WidgetItems :wgList="pageData.formList" ref="formList" v-if="pageData.config.theme" :class="pageData.config.theme.value"/>
+    <WidgetItems :wgList="pageData.list" ref="list"/>
   </div>
 </template>
 
@@ -15,8 +17,17 @@ export default {
   },
   data() {
     return {
-      pageData: null
+      pageData: null,
+      formData: null
     };
+  },
+  computed: {
+    themeBanner() {
+      if (this.pageData.config.theme.banner.includes("http")) {
+        return this.pageData.config.theme.banner;
+      }
+      return this.BASE_URL + this.pageData.config.theme.banner;
+    },
   },
   watch: {
     pageData(n) {
@@ -24,6 +35,21 @@ export default {
     }
   },
   methods: {
+    clickSubmit() {
+      if (!this.$refs.formList.valiAllDate()) return;
+      if (!this.$refs.list.valiAllDate()) return;
+      this.formData = {
+        ...this.$refs.formList.formData,
+        ...this.$refs.list.formData
+      }
+      this.$loading.open({
+        text: "正在提交...",
+        type: "sandglass"
+      });
+      setTimeout(() => {
+        this.$loading.close();
+      }, 3000);
+    },
     getPageData() {
       // 获取数据优先级： url参数id > 本地 sessionStorage > postMessage监听
 

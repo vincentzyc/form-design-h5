@@ -8,6 +8,7 @@ import Api from './assets/js/api';
 import BaseComponents from "./components/base";
 
 Vue.config.productionTip = false
+Vue.prototype.BASE_URL = process.env.BASE_URL;
 
 Vue.use(Api)
 Vue.use(BaseComponents)
