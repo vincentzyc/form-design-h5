@@ -8,7 +8,7 @@
     </div>
     <div class="flex relative" v-if="item.showCode">
       <input placeholder="验证码" type="tel" maxlength="6" v-model="item.codeValue" class="wg-input flex-auto">
-      <ValidateCodeBtn :phone="item.value"/>
+      <ValidateCodeBtn :phone="item.value" :style="item.style.btnStyle"/>
     </div>
   </div>
 </template>
