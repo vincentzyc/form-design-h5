@@ -1,12 +1,15 @@
+import Vue from 'vue';
+
 import Loading from "./loading"; // loading
 import ValidateCodeBtn from "./validate-code-btn"; // 验证码按钮
 
-const version = '1.0';
-const install = function(Vue) {
+let MyPlugin = {};
 
-  if (install.installed) return;
-  
-  Vue.component(ValidateCodeBtn.name, ValidateCodeBtn); //注册组件
+MyPlugin.install = function(Vue) {
+
+	if (this.installed) return;
+
+	Vue.component(ValidateCodeBtn.name, ValidateCodeBtn); //注册组件
 
 	Vue.$loading = Vue.prototype.$loading = Loading; //注册全局方法组件
 
@@ -14,19 +17,17 @@ const install = function(Vue) {
 
 // auto install
 if (typeof window !== 'undefined' && window.Vue) {
-	install(window.Vue);
+	MyPlugin.install(window.Vue);
 }
 
-export default {
-	install,
-	version
-};
+Vue.use(MyPlugin)
+
+export default MyPlugin
 
 /**
  * 使用方法：
  * 1：将此文件夹复制到项目中
  * 2：在mainjs里引入 
- *    import BaseComponents from "此文件夹路径";
- *    Vue.use(BaseComponents)
+ *    import "此文件夹路径";
  * 3：各组件使用方法请查看各组件的.vue文件的注释
  */

@@ -104,9 +104,6 @@ export default {
           console.log(error);
         });
     }
-  },
-  created() {
-
   }
 };
 </script>

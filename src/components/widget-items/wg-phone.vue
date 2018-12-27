@@ -21,7 +21,7 @@ export default {
   methods: {
     validate() {
       if (this.item.value === '') return "请输入手机号";
-      if (!this.$api.checkMobile(this.item.value)) return "请输入正确的手机号";
+      if (!this.$util.checkMobile(this.item.value)) return "请输入正确的手机号";
       if (this.item.codeValue.length !== 6) return "验证码错误";
       return true;
     }

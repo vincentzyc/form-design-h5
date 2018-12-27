@@ -1,4 +1,9 @@
 /* 全局通用样式 */
+html, body, #app, .wrapper {
+	width: 100%;
+	min-height: 100%;
+}
+
 .wrapper img.banner {
 	vertical-align: top
 }

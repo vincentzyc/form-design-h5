@@ -17,10 +17,10 @@
   width: 30px;
   height: 40px;
   margin: 0 auto;
-  animation: timerRotate 1.2s infinite ease;
-  -webkit-animation: timerRotate 1.2s infinite ease;
-  -moz-animation: timerRotate 1.2s infinite ease;
-  -ms-animation: timerRotate 1.2s infinite ease;
+  animation: timerRotate 1.2s infinite;
+  -webkit-animation: timerRotate 1.2s infinite;
+  -moz-animation: timerRotate 1.2s infinite;
+  -ms-animation: timerRotate 1.2s infinite;
 }
 .sandglass-wrap:before {
   content: "";
@@ -34,10 +34,10 @@
   left: 0;
   right: 0;
   margin: auto;
-  animation: topEmpty 1.2s infinite ease;
-  -webkit-animation: topEmpty 1.2s infinite ease;
-  -moz-animation: topEmpty 1.2s infinite ease;
-  -ms-animation: topEmpty 1.2s infinite ease;
+  animation: topEmpty 1.2s linear infinite;
+  -webkit-animation: topEmpty 1.2s linear infinite;
+  -moz-animation: topEmpty 1.2s linear infinite;
+  -ms-animation: topEmpty 1.2s linear infinite;
 }
 .sandglass-wrap:after {
   content: "";
@@ -51,10 +51,10 @@
   left: 0;
   right: 0;
   margin: auto;
-  animation: bottomFill 1.2s infinite ease;
-  -webkit-animation: bottomFill 1.2s infinite ease;
-  -moz-animation: bottomFill 1.2s infinite ease;
-  -ms-animation: bottomFill 1.2s infinite ease;
+  animation: bottomFill 1.2s linear infinite;
+  -webkit-animation: bottomFill 1.2s linear infinite;
+  -moz-animation: bottomFill 1.2s linear infinite;
+  -ms-animation: bottomFill 1.2s linear infinite;
 }
 .sandglass-wrap .timer {
   width: 30px;
