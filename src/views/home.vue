@@ -1,14 +1,14 @@
 <template>
   <div class="wrapper" v-if="pageData" :style="{background:pageData.config.background}">
-    <img v-if="pageData.config.theme" :src="themeBanner" alt="banner" width="100%" class="banner">
+    <img v-if="theme" :src="themeBanner" alt="banner" width="100%" class="banner">
     <WidgetItems
+      v-if="pageData.formList.length>0"
       :wgList="pageData.formList"
-      v-if="pageData.config.theme"
       ref="formList"
-      :class="pageData.config.theme.value"
-      :style="{width:pageData.config.theme.contentWidth}"
+      :class="theme.value"
+      :style="{width:theme.contentWidth,borderRadius:theme.borderRadius?'10px':'0'}"
     />
-    <WidgetItems :wgList="pageData.list" ref="list"/>
+    <WidgetItems v-if="pageData.list.length>0" :wgList="pageData.list" ref="list"/>
   </div>
 </template>
 
@@ -28,25 +28,34 @@ export default {
     };
   },
   computed: {
-    themeBanner() {
-      if (this.pageData.config.theme.banner.includes("http")) {
-        return this.pageData.config.theme.banner;
+    theme() {
+      if (this.pageData) {
+        return this.pageData.config.theme;
       }
-      return this.BASE_URL + this.pageData.config.theme.banner;
+      return null
+    },
+    themeBanner() {
+      if (this.theme.banner.includes("http")) {
+        return this.theme.banner;
+      }
+      return this.BASE_URL + this.theme.banner;
     },
   },
   watch: {
     pageData(n) {
       document.title = n.config.title;
+      // this.$util.addMatomo(n.config.matomoId);
     }
   },
   methods: {
     clickSubmit() {
-      if (!this.$refs.formList.valiAllDate()) return;
-      if (!this.$refs.list.valiAllDate()) return;
+      if (this.$refs.formList && !this.$refs.formList.valiAllDate()) return;
+      if (this.$refs.list && !this.$refs.list.valiAllDate()) return;
+      let formListData = this.$refs.formList ? { ...this.$refs.formList.formData } : {};
+      let listData = this.$refs.list ? { ...this.$refs.list.formData } : {};
       this.formData = {
-        ...this.$refs.formList.formData,
-        ...this.$refs.list.formData
+        ...formListData,
+        ...listData
       }
       this.$loading.open({
         text: "正在提交...",
@@ -54,6 +63,11 @@ export default {
       });
       setTimeout(() => {
         this.$loading.close();
+        this.$createDialog({
+          type: 'alert',
+          title: '提示',
+          content: '提交成功'
+        }).show()
       }, 3000);
     },
     getPageData() {

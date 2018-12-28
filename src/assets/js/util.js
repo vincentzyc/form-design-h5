@@ -179,5 +179,33 @@ export default {
 			requestAnimationFrame(step);
 		};
 		step();
-	}
+	},
+	/**
+	 * 添加matomo统计
+	 * @param {Number} id matomo统计id
+	 */
+	addMatomo(id) {
+		if (document.getElementById("matomoCode")) return;
+		let script = document.createElement("script"),
+			jscode = `
+		var _paq = _paq || [];
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+		  var u="//tj.liulianglf.com/";
+		  _paq.push(['setTrackerUrl', u+'piwik.php']);
+		  _paq.push(['setSiteId', '${id}']);
+		  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		})();
+		`;
+		script.type = "text/javascript";
+		script.id = "matomoCode";
+		try {
+			script.appendChild(document.createTextNode(jscode));
+		} catch (ex) {
+			script.text = jscode;
+		}
+		document.head.appendChild(script);
+	},
 }
