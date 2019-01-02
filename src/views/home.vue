@@ -49,6 +49,9 @@ export default {
   },
   methods: {
     clickSubmit() {
+      // this.$api.getVerifyCode().then(res=>{
+      //   console.log(res.data);
+      // });
       if (this.$refs.formList && !this.$refs.formList.valiAllDate()) return;
       if (this.$refs.list && !this.$refs.list.valiAllDate()) return;
       let formListData = this.$refs.formList ? { ...this.$refs.formList.formData } : {};
