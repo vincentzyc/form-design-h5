@@ -8,6 +8,7 @@ import './assets/css/main.css'
 import App from './App.vue'
 
 Vue.config.productionTip = false
+
 Vue.prototype.BASE_URL = process.env.BASE_URL;
 
 new Vue({
