@@ -35,7 +35,7 @@ export default {
       return null
     },
     themeBanner() {
-      if (this.theme.banner.includes("http")) {
+      if (this.theme.banner.includes("http") || this.theme.banner.includes("https")) {
         return this.theme.banner;
       }
       return this.BASE_URL + this.theme.banner;
