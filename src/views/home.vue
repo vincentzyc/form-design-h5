@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" v-if="Object.prototype.toString.call(pageData) === '[object Object]'" :style="{background:pageData.config.background}">
+  <div class="wrapper" v-if="pageData" :style="{background:pageData.config.background}">
     <img v-if="theme" :src="themeBanner" alt="banner" width="100%" class="banner">
     <WidgetItems
       v-if="pageData.formList.length>0"
@@ -43,7 +43,6 @@ export default {
   },
   watch: {
     pageData(n) {
-      console.log("watch",n);
       document.title = n.config.title;
       // this.$util.addMatomo(n.config.matomoId);
     }
@@ -87,15 +86,16 @@ export default {
       window.addEventListener('message', event => {
         if (event.origin !== this.$api.postMsgoOrigin()) return;
         if (Object.prototype.toString.call(event.data) === '[object Object]') {
-          this.pageData = event.data;
-          this.$util.setSessionStorage("pageData", event.data);
+          if (event.data.config && event.data.formList && event.data.list) {
+            event.source.postMessage('Received', this.$api.postMsgoUrl());
+            this.pageData = event.data;
+            this.$util.setSessionStorage("pageData", event.data);
+          }
         }
-        event.source.postMessage('Received', this.$api.postMsgoUrl());
       }, false);
     }
   },
   created() {
-    console.log("created",this.pageData);
     this.getPageData();
   }
 };
