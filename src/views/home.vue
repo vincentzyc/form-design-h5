@@ -84,7 +84,7 @@ export default {
 
       // postMessage监听（实时预览）
       window.addEventListener('message', event => {
-        if (event.origin !== this.$api.postMsgoOrigin) return;
+        if (event.origin !== this.$api.postMsgoOrigin()) return;
         event.source.postMessage('Received', event.origin);
         this.pageData = event.data;
         this.$util.setSessionStorage("pageData", event.data);

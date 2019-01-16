@@ -3,7 +3,13 @@ import Vue from 'vue';
 const vue = new Vue();
 
 export default {
-	postMsgoOrigin: "http://" + window.location.hostname + ":5000", //根据实际情况修改为 form-design 项目地址
+	postMsgoOrigin() {
+		if (window.location.port) {
+			let arr = window.location.origin.split(":");
+			return `${arr[0]}:${arr[1]}:5000`
+		}
+		return window.location.origin + "/form-design"
+	},
 	vkcPost() {
 		return new Promise(resolve => {
 			setTimeout(() => {
