@@ -49,9 +49,6 @@ export default {
   },
   methods: {
     clickSubmit() {
-      // this.$api.getVerifyCode().then(res=>{
-      //   console.log(res.data);
-      // });
       if (this.$refs.formList && !this.$refs.formList.valiAllDate()) return;
       if (this.$refs.list && !this.$refs.list.valiAllDate()) return;
       let formListData = this.$refs.formList ? { ...this.$refs.formList.formData } : {};
@@ -87,7 +84,7 @@ export default {
 
       // postMessage监听（实时预览）
       window.addEventListener('message', event => {
-        if (event.origin !== "http://192.168.218.113:5000") return;
+        if (event.origin !== this.$api.postMsgoOrigin) return;
         event.source.postMessage('Received', event.origin);
         this.pageData = event.data;
         this.$util.setSessionStorage("pageData", event.data);

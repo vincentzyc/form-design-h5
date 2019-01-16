@@ -39,7 +39,7 @@ export default {
     },
     getCode() {
       if (this.disbtn) return;
-      this.$api.getVerifyCode(this.phone).then(res => {
+      this.$api.getVerifyCode(this.phone).then(() => {
         this.sendcCode();
       })
     }
