@@ -3,8 +3,19 @@ import Vue from 'vue';
 const vue = new Vue();
 
 export default {
+	env() {
+		if (process.env.NODE_ENV === "development") return "development";
+		return "production";
+	},
+	postMsgoUrl() {
+		if (this.env() === "development") {
+			let arr = window.location.origin.split(":");
+			return `${arr[0]}:${arr[1]}:5000`
+		}
+		return window.location.origin + "/form-design"
+	},
 	postMsgoOrigin() {
-		if (window.location.port) {
+		if (this.env() === "development") {
 			let arr = window.location.origin.split(":");
 			return `${arr[0]}:${arr[1]}:5000`
 		}
