@@ -26,5 +26,6 @@ npm run lint
 ```
 
 ### 提示
-拖拽式生成此项目页面的后台系统 ———— form-design
+拖拽式生成此项目页面的后台系统 —— form-design
+
 See [form-design](https://github.com/vincentzyc/form-design).
