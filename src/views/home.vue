@@ -85,9 +85,11 @@ export default {
       // postMessage监听（实时预览）
       window.addEventListener('message', event => {
         if (event.origin !== this.$api.postMsgoOrigin()) return;
+        if (typeof event.data === 'object') {
+          this.pageData = event.data;
+          this.$util.setSessionStorage("pageData", event.data);
+        }
         event.source.postMessage('Received', this.$api.postMsgoUrl());
-        this.pageData = event.data;
-        this.$util.setSessionStorage("pageData", event.data);
       }, false);
     }
   },
