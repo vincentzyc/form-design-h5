@@ -8,7 +8,7 @@ export default {
 			let arr = window.location.origin.split(":");
 			return `${arr[0]}:${arr[1]}:5000`
 		}
-		return window.location.origin + "/form-design"
+		return window.location.origin
 	},
 	vkcPost() {
 		return new Promise(resolve => {
