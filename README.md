@@ -1,5 +1,12 @@
 # form-design-h5
 
+### 提示
+先通过系统生成页面
+
+拖拽式生成此项目页面的后台系统 —— form-design
+
+See [form-design](https://github.com/vincentzyc/form-design).
+
 ## Project setup
 ```
 npm install
@@ -24,8 +31,3 @@ npm run test
 ```
 npm run lint
 ```
-
-### 提示
-拖拽式生成此项目页面的后台系统 —— form-design
-
-See [form-design](https://github.com/vincentzyc/form-design).
