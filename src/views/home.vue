@@ -44,7 +44,7 @@ export default {
   watch: {
     pageData(n) {
       document.title = n.config.title;
-      // this.$util.addMatomo(n.config.matomoId);
+      // this.$util.addMatomo(n.config.countId);
     }
   },
   methods: {
