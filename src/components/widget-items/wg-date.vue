@@ -1,6 +1,6 @@
 <template>
-  <div class="wg-item" :class="[item.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
-    <div class="wg-title" :style="{width:item.labelwidth/50+'rem'}">{{item.labelTitle}}</div>
+  <div class="wg-item" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
+    <div class="wg-title" :style="{width:item.label.labelwidth/50+'rem'}">{{item.label.labelTitle}}</div>
     <div class="flex-auto">
       <input type="date" v-model="item.value" class="wg-input">
     </div>
