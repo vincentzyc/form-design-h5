@@ -8,6 +8,7 @@
         <WgSelect v-if="item.type === 'select'" :ref="item.key" :item="item"/>
         <WgSwitch v-if="item.type === 'switch'" :ref="item.key" :item="item"/>
         <WgDate v-if="item.type === 'date'" :ref="item.key" :item="item"/>
+        <WgHorizontalPicker v-if="item.type === 'h-picker'" :ref="item.key" :item="item"/>
 
         <div v-if="item.type === 'imgshow'" :style="item.style">
           <div class="flex flex-center">
@@ -36,6 +37,7 @@ import WgCheckbox from "./wg-checkbox"
 import WgSelect from "./wg-select"
 import WgSwitch from "./wg-switch"
 import WgDate from "./wg-date"
+import WgHorizontalPicker from "./wg-horizontal-picker"
 export default {
   name: "widgetItems",
   components: {
@@ -44,7 +46,8 @@ export default {
     WgCheckbox,
     WgSelect,
     WgSwitch,
-    WgDate
+    WgDate,
+    WgHorizontalPicker
   },
   props: {
     wgList: Array
