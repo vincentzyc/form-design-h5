@@ -2,15 +2,7 @@
   <div class="wg-item" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
     <div class="wg-title" :style="{width:item.label.labelwidth/50+'rem'}">{{item.label.labelTitle}}</div>
     <div class="flex-auto" style="overflow:hidden">
-      <horizontal-picker
-        v-model="item.value"
-        style="margin: 0 auto;"
-        :data="item.options"
-        :pickerStyle="{color:item.pickerColor}"
-        :showNumber="5"
-      >
-        <!-- <template slot-scope="{item}">{{item === hpicker ? item + "岁":item}}</template> -->
-      </horizontal-picker>
+      <horizontal-picker v-model="item.value" style="margin: 0 auto;" :data="item.options" :pickerStyle="item.pickerStyle" :showNumber="5"></horizontal-picker>
     </div>
   </div>
 </template>
@@ -25,7 +17,7 @@ export default {
       return true;
     }
   },
-  created(){
+  created() {
 
   }
 }
@@ -36,7 +28,7 @@ export default {
 //         <div class="text-center">horizontal Scroll Picker</div>
 //         <horizontal-picker
 //           v-model="hpicker"
-//           :pickerClass="'pselected'"
+//           :pickerStyle="pickerStyle"
 //           :data="items"
 //           :defaultIndex="defaultIndex"
 //           :itemWidth="itemWidth"
@@ -48,13 +40,6 @@ export default {
 //     </div>
 //   </base-page>
 // </template>
-// const items = function () {
-//   let arr = [];
-//   for (let index = 22; index < 59; index++) {
-//     arr.push(index)
-//   }
-//   return arr
-// }
 // export default {
 //   data() {
 //     return {
@@ -70,9 +55,4 @@ export default {
 //   }
 // }
 // </script>
-
-// <style lang="stylus" rel="stylesheet/stylus">
-// .pselected {
-//   color: rgb(214, 131, 23) !important;
-// }
 </script>

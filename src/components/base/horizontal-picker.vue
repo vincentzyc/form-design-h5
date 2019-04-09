@@ -44,7 +44,7 @@ export default {
     pickerStyle: {
       type: Object,
       default: () => {
-        color: rgb(214, 131, 23);
+        color: '#d68317';
       }
     },
     itemWidth: {
@@ -179,10 +179,6 @@ export default {
       color: #707274;
       box-sizing: border-box;
       backface-visibility: hidden;
-    }
-
-    .picker-selected {
-      color: rgb(214, 131, 23);
     }
   }
 }
