@@ -28,7 +28,7 @@
 <script type="text/ecmascript-6">
 
 const ITEM_WIDTH = 48;
-const SHOW_NUMBER = 7;
+const SHOW_NUMBER = 5;
 
 export default {
   name: "horizontal-picker",
