@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-for="item in wgList">
-      <div class="widget-view" :key="item.key" :class="{'widget-view-imgshow':item.type === 'imgshow','widget-view-button':item.type === 'button'}">
+      <div class="widget-view" :key="item.key" :class="{'widget-view-imgShow':item.type === 'imgShow','widget-view-button':item.type === 'button'}">
         <WgPhone v-if="item.type === 'phone'" :ref="item.key" :item="item"/>
         <WgInput v-if="item.type === 'input'" :ref="item.key" :item="item"/>
         <WgCheckbox v-if="item.type === 'checkbox'" :ref="item.key" :item="item"/>
@@ -10,7 +10,7 @@
         <WgDate v-if="item.type === 'date'" :ref="item.key" :item="item"/>
         <WgHorizontalPicker v-if="item.type === 'h-picker'" :ref="item.key" :item="item"/>
 
-        <div v-if="item.type === 'imgshow'" :style="item.style">
+        <div v-if="item.type === 'imgShow'" :style="item.style">
           <div class="flex flex-center">
             <img :src="item.value" alt="图片展示" width="100%">
           </div>
