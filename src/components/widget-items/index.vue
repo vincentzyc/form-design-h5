@@ -21,7 +21,7 @@
         <div v-if="item.type === 'imgSlide'" class="wg-imgslide">
           <div :style="{margin:item.style.margin}">
             <div :style="{width:'100%',height:item.style.height+'px'}">
-              <cube-slide :ref="item.key" :data="item.value" style="max-width:640px">
+              <cube-slide :ref="item.key" :data="item.value" :interval="item.interval" style="max-width:640px">
                 <cube-slide-item v-for="(images, index) in item.value" :key="index">
                   <a :href="images.url">
                     <img :src="images.image" width="100%">
