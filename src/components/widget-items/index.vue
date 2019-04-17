@@ -10,9 +10,25 @@
         <WgDate v-if="item.type === 'date'" :ref="item.key" :item="item"/>
         <WgHorizontalPicker v-if="item.type === 'h-picker'" :ref="item.key" :item="item"/>
 
-        <div v-if="item.type === 'imgShow'" :style="item.style">
-          <div class="flex flex-center">
-            <img :src="item.value" alt="图片展示" width="100%">
+        <div v-if="item.type === 'imgShow'" class="wg-imgshow">
+          <div :style="item.style">
+            <div class="flex flex-center">
+              <img :src="item.value" alt="图片展示" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div v-if="item.type === 'imgSlide'" class="wg-imgslide">
+          <div :style="{margin:item.style.margin}">
+            <div :style="{width:'100%',height:item.style.height+'px'}">
+              <cube-slide :ref="item.key" :data="item.value" style="max-width:640px">
+                <cube-slide-item v-for="(images, index) in item.value" :key="index">
+                  <a :href="images.url">
+                    <img :src="images.image" width="100%">
+                  </a>
+                </cube-slide-item>
+              </cube-slide>
+            </div>
           </div>
         </div>
 
@@ -76,12 +92,12 @@ export default {
         if (typeof this.$refs[item.key][0].validate !== 'function') {
           this.formatParam(item);
           continue;
-        };
+        }
         let result = this.$refs[item.key][0].validate();
         if (result === true) {
           this.formatParam(item);
           continue
-        };
+        }
         this.$createToast({
           time: 1500,
           txt: result,
