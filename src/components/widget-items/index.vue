@@ -10,7 +10,7 @@
         <WgDate v-if="item.type === 'date'" :ref="item.key" :item="item"/>
         <WgHorizontalPicker v-if="item.type === 'h-picker'" :ref="item.key" :item="item"/>
 
-        <div v-if="item.type === 'imgShow'" class="wg-imgshow">
+        <div v-if="item.type === 'imgShow'&&item.value" class="wg-imgshow">
           <div :style="item.style">
             <div class="flex flex-center">
               <img :src="item.value" alt="图片展示" width="100%">
