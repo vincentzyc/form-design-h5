@@ -2,14 +2,28 @@
   <div>
     <template v-for="item in wgList">
       <div class="widget-view" :key="item.key" :class="{'widget-view-imgShow':item.type === 'imgShow','widget-view-button':item.type === 'button'}">
+        <!-- 手机 -->
         <WgPhone v-if="item.type === 'phone'" :ref="item.key" :item="item"/>
+
+        <!-- 输入框 -->
         <WgInput v-if="item.type === 'input'" :ref="item.key" :item="item"/>
+
+        <!-- 选择框 -->
         <WgCheckbox v-if="item.type === 'checkbox'" :ref="item.key" :item="item"/>
+
+        <!-- 下拉选择 -->
         <WgSelect v-if="item.type === 'select'" :ref="item.key" :item="item"/>
+
+        <!-- 开关 -->
         <WgSwitch v-if="item.type === 'switch'" :ref="item.key" :item="item"/>
+
+        <!-- 日期选择 -->
         <WgDate v-if="item.type === 'date'" :ref="item.key" :item="item"/>
+
+        <!-- 横向滑动自动选择 -->
         <WgHorizontalPicker v-if="item.type === 'h-picker'" :ref="item.key" :item="item"/>
 
+        <!-- 图片展示 -->
         <div v-if="item.type === 'imgShow'&&item.value" class="wg-imgshow">
           <div :style="item.style">
             <div class="flex flex-center">
@@ -18,6 +32,7 @@
           </div>
         </div>
 
+        <!-- 图片轮播 -->
         <div v-if="item.type === 'imgSlide'" class="wg-imgslide">
           <div :style="{margin:item.style.margin}">
             <div :style="{width:'100%',height:item.style.height/88.88+'rem'}">
@@ -32,14 +47,21 @@
           </div>
         </div>
 
+        <!-- 按钮 -->
         <div v-if="item.type === 'button'" :style="item.style">
           <div class="flex flex-center">
             <button class="wg-button" :style="item.style.btnStyle" @click="clickBtn(item)">{{item.btnText}}</button>
           </div>
         </div>
 
-        <div v-if="item.type === 'staticText'" class="wg-staticText" :style="item.style">
+        <!-- 文本描述 -->
+        <div v-if="item.type === 'staticText'" class="wg-staticText">
           <p :style="item.style">{{item.value}}</p>
+        </div>
+
+        <!-- 分割线 -->
+        <div v-if="item.type === 'splitLine'" class="wg-splitLine">
+          <hr class="splitLine-hr" :style="item.style">
         </div>
       </div>
     </template>
