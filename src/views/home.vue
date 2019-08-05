@@ -1,14 +1,18 @@
 <template>
-  <div class="wrapper" v-if="pageData" :style="{background:pageData.config.background}">
-    <img v-if="theme" :src="themeBanner" alt="banner" width="100%" class="banner">
+  <div
+    class="wrapper"
+    v-if="pageData"
+    :style="{backgroundColor:pageData.config.backgroundColor,backgroundImage:`url(${pageData.config.backgroundImage})`}"
+  >
+    <img v-if="theme" :src="themeBanner" alt="banner" width="100%" class="banner" />
     <WidgetItems
       v-if="pageData.formList.length>0"
       :wgList="pageData.formList"
       ref="formList"
       :class="theme.value"
-      :style="{width:theme.contentWidth,borderRadius:theme.borderRadius?'10px':'0'}"
+      :style="{width:theme.contentWidth,margin:theme.margin,borderRadius:theme.borderRadius?'10px':'0'}"
     />
-    <WidgetItems v-if="pageData.list.length>0" :wgList="pageData.list" ref="list"/>
+    <WidgetItems v-if="pageData.list.length>0" :wgList="pageData.list" ref="list" />
   </div>
 </template>
 
