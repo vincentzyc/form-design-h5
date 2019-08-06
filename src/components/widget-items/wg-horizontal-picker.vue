@@ -1,6 +1,6 @@
 <template>
   <div class="wg-item" :id="item.key" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
-    <div class="wg-title" :style="{minWidth:item.label.labelwidth/50+'rem'}">{{item.label.labelTitle}}</div>
+    <div class="wg-title" :style="$util.changeRem(item.label.labelwidth)">{{item.label.labelTitle}}</div>
     <div class="flex-auto">
       <horizontal-picker
         v-model="item.value"

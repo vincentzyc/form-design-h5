@@ -1,6 +1,6 @@
 <template>
   <div class="wg-item" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
-    <div class="wg-title" v-show="item.showLabel" :style="{width:item.label.labelwidth/50+'rem'}">{{item.label.labelTitle}}</div>
+    <div class="wg-title" v-show="item.showLabel" :style="$util.changeRem(item.label.labelwidth)">{{item.label.labelTitle}}</div>
     <div class="flex-auto">
       <select v-model="item.value" class="wg-select">
         <option value disabled selected hidden>{{item.placeholder}}</option>

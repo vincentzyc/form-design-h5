@@ -1,17 +1,7 @@
 <template>
-  <div
-    class="wrapper"
-    v-if="pageData"
-    :style="{backgroundColor:pageData.config.backgroundColor,backgroundImage:`url(${pageData.config.backgroundImage})`}"
-  >
+  <div class="wrapper" v-if="pageData" :style="getStyle(pageData.config)">
     <img v-if="theme" :src="themeBanner" alt="banner" width="100%" class="banner" />
-    <WidgetItems
-      v-if="pageData.formList.length>0"
-      :wgList="pageData.formList"
-      ref="formList"
-      :class="theme.value"
-      :style="{width:theme.contentWidth,margin:theme.margin,borderRadius:theme.borderRadius?'10px':'0'}"
-    />
+    <WidgetItems v-if="pageData.formList.length>0" :wgList="pageData.formList" ref="formList" :class="theme.value" :style="getStyle1(theme)" />
     <WidgetItems v-if="pageData.list.length>0" :wgList="pageData.list" ref="list" />
   </div>
 </template>
@@ -52,6 +42,19 @@ export default {
     }
   },
   methods: {
+    getStyle(obj) {
+      return {
+        backgroundColor: obj.backgroundColor,
+        backgroundImage: `url(${obj.backgroundImage})`
+      }
+    },
+    getStyle1(obj) {
+      return {
+        width: obj.contentWidth,
+        margin: this.$util.changeRem(obj.margin),
+        borderRadius: obj.borderRadius ? '10px' : '0'
+      }
+    },
     clickSubmit() {
       if (this.$refs.formList && !this.$refs.formList.valiAllDate()) return;
       if (this.$refs.list && !this.$refs.list.valiAllDate()) return;
