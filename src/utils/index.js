@@ -1,4 +1,11 @@
 export default {
+  /**
+   * 获取数据类型
+   * @param value 需要判断的值
+   */
+  getType(value) {
+    return Object.prototype.toString.call(value).slice(8, -1)
+  },
 	/**
 	 * 设置cookie
 	 * @param key  key
@@ -213,6 +220,7 @@ export default {
    * @param {String} str px距离  例如：50px 10px 0 10px
    */
   changeRem(str = "") {
+    if (this.getType(str) !== 'String') str = str.toString();
     let nospace = str.replace(/\s+/g, '');
     return nospace.replace(/(-?\d+)(px)/g, (a, b) => {
       return b / 50 + 'rem '
