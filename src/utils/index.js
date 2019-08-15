@@ -222,7 +222,7 @@ export default {
   changeRem(str = "") {
     if (this.getType(str) !== 'String') str = str.toString();
     let nospace = str.replace(/\s+/g, '');
-    return nospace.replace(/(-?\d+)(px)/g, (a, b) => {
+    return nospace.replace(/(-?\d+)(px)?/g, (a, b) => {
       return b / 50 + 'rem '
     })
   }
