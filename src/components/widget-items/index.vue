@@ -1,33 +1,37 @@
 <template>
   <div>
     <template v-for="item in wgList">
-      <div class="widget-view" :key="item.key" :class="{'widget-view-imgShow':item.type === 'imgShow','widget-view-button':item.type === 'button'}">
+      <div
+        class="widget-view"
+        :key="item.key"
+        :class="{'widget-view-imgShow':item.type === 'imgShow','widget-view-button':item.type === 'button'}"
+      >
         <!-- 手机 -->
-        <WgPhone v-if="item.type === 'phone'" :ref="item.key" :item="item"/>
+        <WgPhone v-if="item.type === 'phone'" :ref="item.key" :item="item" />
 
         <!-- 输入框 -->
-        <WgInput v-if="item.type === 'input'" :ref="item.key" :item="item"/>
+        <WgInput v-if="item.type === 'input'" :ref="item.key" :item="item" />
 
         <!-- 选择框 -->
-        <WgCheckbox v-if="item.type === 'checkbox'" :ref="item.key" :item="item"/>
+        <WgCheckbox v-if="item.type === 'checkbox'" :ref="item.key" :item="item" />
 
         <!-- 下拉选择 -->
-        <WgSelect v-if="item.type === 'select'" :ref="item.key" :item="item"/>
+        <WgSelect v-if="item.type === 'select'" :ref="item.key" :item="item" />
 
         <!-- 开关 -->
-        <WgSwitch v-if="item.type === 'switch'" :ref="item.key" :item="item"/>
+        <WgSwitch v-if="item.type === 'switch'" :ref="item.key" :item="item" />
 
         <!-- 日期选择 -->
-        <WgDate v-if="item.type === 'date'" :ref="item.key" :item="item"/>
+        <WgDate v-if="item.type === 'date'" :ref="item.key" :item="item" />
 
         <!-- 横向滑动自动选择 -->
-        <WgHorizontalPicker v-if="item.type === 'h-picker'" :ref="item.key" :item="item"/>
+        <WgHorizontalPicker v-if="item.type === 'h-picker'" :ref="item.key" :item="item" />
 
         <!-- 图片展示 -->
         <div v-if="item.type === 'imgShow'&&item.value" class="wg-imgshow">
           <div :style="item.style">
-            <div class="flex flex-center">
-              <img :src="item.value" alt="图片展示" width="100%">
+            <div class="flex flex-center" @click="jumpH5(item.link)">
+              <img :src="item.value" alt="图片展示" width="100%" />
             </div>
           </div>
         </div>
@@ -39,7 +43,7 @@
               <cube-slide :ref="item.key" :data="item.value" :interval="item.interval" style="max-width:640px">
                 <cube-slide-item v-for="(images, index) in item.value" :key="index">
                   <a :href="images.url">
-                    <img :src="images.image" width="100%">
+                    <img :src="images.image" width="100%" />
                   </a>
                 </cube-slide-item>
               </cube-slide>
@@ -55,13 +59,13 @@
         </div>
 
         <!-- 文本描述 -->
-        <div v-if="item.type === 'staticText'" class="wg-staticText">
+        <div v-if="item.type === 'staticText'" class="wg-staticText" @click="jumpH5(item.link)">
           <p :style="item.style">{{item.value}}</p>
         </div>
 
         <!-- 分割线 -->
         <div v-if="item.type === 'splitLine'" class="wg-splitLine">
-          <hr class="splitLine-hr" :style="item.style">
+          <hr class="splitLine-hr" :style="item.style" />
         </div>
       </div>
     </template>
@@ -106,6 +110,11 @@ export default {
         default:
           break;
       }
+    },
+    jumpH5(link) {
+      let isLink = this.$util.isLink(link);
+      if (!isLink) return;
+      window.location.href = link
     },
     valiAllDate() {
       let flag = true;

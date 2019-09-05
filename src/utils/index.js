@@ -91,6 +91,15 @@ export default {
     if ((/^1[3-9]\d{9}$/.test(phone))) return true;
     return false;
   },
+  /**
+	 * 检查网址格式
+	 * @param {String} val 网址
+	 */
+  isLink(val){
+    let pattern = /^((https:|http:|:)?\/\/)(?:[\da-z.-]+)\.(?:[a-z.]{2,6})(?:\/\w\.-]*)*\/?/;
+		let isLink = pattern.test(val);
+		return isLink;
+  },
 	/**
 	 * 倒计时
 	 * @param  time  倒计时秒数
