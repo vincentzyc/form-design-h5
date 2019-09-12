@@ -59,7 +59,7 @@
         </div>
 
         <!-- 文本描述 -->
-        <div v-if="item.type === 'staticText'" class="wg-staticText" @click="jumpH5(item.link)">
+        <div v-if="item.type === 'staticText'" class="wg-staticText clearfix" :style="{backgroundImage:`url(${item.backgroundImage||''})`}" @click="jumpH5(item.link)">
           <p :style="item.style">{{item.value}}</p>
         </div>
 
