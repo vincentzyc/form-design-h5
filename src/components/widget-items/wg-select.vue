@@ -17,8 +17,10 @@
 <script>
 export default {
   props: {
-    item: Object, 
-    required: true
+    item: {
+      type: Object,
+      required: true
+    }
   }
 }
 </script>
