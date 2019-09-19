@@ -1,5 +1,10 @@
 <template>
-  <div class="wg-item" :id="item.key" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']" :style="item.style">
+  <div
+    class="wg-item"
+    :id="item.key"
+    :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']"
+    :style="item.style"
+  >
     <div class="wg-title" :style="{width:$util.changeRem(item.label.labelwidth)}">{{item.label.labelTitle}}</div>
     <div class="flex-auto">
       <horizontal-picker
@@ -16,13 +21,8 @@
 <script>
 export default {
   props: {
-    item: Object
-  },
-  methods: {
-    validate() {
-      if (this.item.value === '') return `请选择${this.item.labelTitle}`;
-      return true;
-    }
+    item: Object,
+    required: true
   }
 }
 </script>

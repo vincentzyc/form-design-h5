@@ -39,6 +39,13 @@ export default {
     },
     getCode() {
       if (this.disbtn) return;
+      if (!(/^1[3-9]\d{9}$/.test(this.phone))) {
+        this.$createToast({
+          txt: '请输入正确的手机号',
+          type: 'txt'
+        }).show();
+        return;
+      }
       this.$api.getVerifyCode(this.phone).then(() => {
         this.sendcCode();
       })
@@ -49,17 +56,16 @@ export default {
 <style scoped>
 .getVerCode-btn {
   background: #409efe;
-  border: 0;
   outline: 0;
-  font-size: 14px;
+  font-size: 12px;
   color: #fff;
   border-radius: 5px;
-  height: 40px;
-  min-width: 100px;
-  margin-top: 5px;
-  margin-left: 10px;
+  line-height: 34px;
+  min-width: 88px;
   cursor: pointer;
   transition: 0.3s;
+  border: 1px solid transparent;
+  margin-left: 10px;
 }
 .getVerCode-btn:active {
   opacity: 0.7;

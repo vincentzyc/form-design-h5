@@ -1,16 +1,30 @@
 <template>
-  <div class="wg-phone" :style="item.style">
+  <div class="wg-phone" :style="$util.formatStyle(item.style)">
     <div class="wg-item" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']">
-      <div class="wg-title flex-none" v-show="item.showLabel" :style="{width:$util.changeRem(item.label.labelwidth)}">{{item.label.labelTitle}}</div>
+      <div
+        class="wg-title flex-none"
+        v-show="item.showLabel"
+        :style="{width:$util.changeRem(item.label.labelwidth)}"
+      >{{item.label.labelTitle}}</div>
       <div class="flex-auto">
-        <input class="wg-input" type="tel" maxlength="11" v-model="item.value" :placeholder="item.placeholder">
+        <input
+          class="wg-input"
+          type="tel"
+          maxlength="11"
+          v-model.trim="item.value"
+          :placeholder="item.placeholder"
+        />
       </div>
     </div>
     <div class="wg-item" v-if="item.showCode" :class="[item.label.labelPosition==='top'?'flex-column':'align-middle']">
-      <div class="wg-title flex-none" v-show="item.showLabel" :style="{width:$util.changeRem(item.label.labelwidth)}">验证码</div>
-      <div class="flex flex-auto">
-        <input placeholder="验证码" type="tel" maxlength="6" v-model="item.codeValue" class="wg-input flex-auto">
-        <ValidateCodeBtn :phone="item.value" :style="item.style.btnStyle"/>
+      <div
+        class="wg-title flex-none"
+        v-show="item.showLabel"
+        :style="{width:$util.changeRem(item.label.labelwidth)}"
+      >验证码</div>
+      <div class="flex flex-auto flex-center">
+        <input placeholder="验证码" type="tel" maxlength="6" v-model.trim="item.codeValue" class="wg-input flex-auto" />
+        <ValidateCodeBtn :phone="item.value" :style="$util.formatStyle(item.style.btnStyle)" />
       </div>
     </div>
   </div>
@@ -19,15 +33,8 @@
 <script>
 export default {
   props: {
-    item: Object
-  },
-  methods: {
-    validate() {
-      if (this.item.value === '') return "请输入手机号";
-      if (!this.$util.checkMobile(this.item.value)) return "请输入正确的手机号";
-      if (this.item.showCode && this.item.codeValue.length !== 6) return "验证码错误";
-      return true;
-    }
+    item: Object,
+    required: true
   }
 }
 </script>

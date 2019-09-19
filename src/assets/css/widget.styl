@@ -1,27 +1,36 @@
 $primary-color = #409EFF;
 
-.widget-view.widget-view-imgshow {
-  padding: 0;
-}
-
-.widget-view /deep/ {
-  margin: 0;
-  padding: 5px 10px;
-  // background: #fff;
-  position: relative;
-
-  input::-webkit-input-placeholder {
-    color: #666;
-    opacity: 1;
+.widget-list /deep/ {
+  .widget-view.no-padding {
+    padding: 0;
   }
 
-  input[type='date'] {
-    &::-webkit-inner-spin-button {
-      display: none;
+  .widget-form-list {
+    position: relative;
+    transition: 0.2s;
+    overflow: hidden;
+    background-color: #fff;
+  }
+
+  .widget-view {
+    margin: 0;
+    padding: 5px 10px;
+    // background: #fff;
+    position: relative;
+
+    input::-webkit-input-placeholder {
+      color: #666;
+      opacity: 1;
     }
 
-    &::-webkit-clear-button {
-      display: none;
+    input[type='date'] {
+      &::-webkit-inner-spin-button {
+        display: none;
+      }
+
+      &::-webkit-clear-button {
+        display: none;
+      }
     }
   }
 

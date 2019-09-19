@@ -1,81 +1,37 @@
 <template>
-  <div class="wrapper" v-if="pageData" :style="getStyle(pageData.config)">
-    <img v-if="theme" :src="themeBanner" alt="banner" width="100%" class="banner" />
-    <WidgetItems v-if="pageData.formList.length>0" :wgList="pageData.formList" ref="formList" :class="theme.value" :style="getStyle1(theme)" />
-    <WidgetItems v-if="pageData.list.length>0" :wgList="pageData.list" ref="list" />
+  <div
+    v-if="pageData"
+    class="wrapper"
+    :class="pageData.theme"
+    :style="{...$util.formatStyle(pageData.style),backgroundImage:`url(${pageData.style.backgroundImage})`}"
+  >
+    <div :class="pageData.template">
+      <RenderPage :list="pageData.list" />
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import WidgetItems from "@/components/widget-items";
+import RenderPage from "@/components/render-page";
 
 export default {
   name: "home",
   components: {
-    WidgetItems
+    RenderPage,
   },
   data() {
     return {
       pageData: null,
-      formData: null
+      // formData: null
     };
   },
-  computed: {
-    theme() {
-      if (this.pageData) {
-        return this.pageData.config.theme;
-      }
-      return null
-    },
-    themeBanner() {
-      if (this.theme.banner.includes("http") || this.theme.banner.includes("https")) {
-        return this.theme.banner;
-      }
-      return this.BASE_URL + this.theme.banner;
-    },
-  },
-  watch: {
-    pageData(n) {
-      document.title = n.config.title;
-      // this.$util.addMatomo(n.config.countId);
-    }
-  },
   methods: {
-    getStyle(obj) {
-      return {
-        backgroundColor: obj.backgroundColor,
-        backgroundImage: `url(${obj.backgroundImage})`
-      }
-    },
-    getStyle1(obj) {
-      return {
-        width: obj.contentWidth,
-        margin: this.$util.changeRem(obj.margin),
-        borderRadius: obj.borderRadius ? '10px' : '0'
-      }
-    },
-    clickSubmit() {
-      if (this.$refs.formList && !this.$refs.formList.valiAllDate()) return;
-      if (this.$refs.list && !this.$refs.list.valiAllDate()) return;
-      let formListData = this.$refs.formList ? { ...this.$refs.formList.formData } : {};
-      let listData = this.$refs.list ? { ...this.$refs.list.formData } : {};
-      this.formData = {
-        ...formListData,
-        ...listData
-      }
-      this.$loading.open({
-        text: "正在提交...",
-        type: "sandglass"
-      });
-      setTimeout(() => {
-        this.$loading.close();
-        this.$createDialog({
-          type: 'alert',
-          title: '提示',
-          content: '提交成功'
-        }).show()
-      }, 3000);
+    async initPage() {
+      if (!this.pageData) return;
+      this.BUS.setPageData(this.pageData);
+      document.title = this.pageData.title;
+      this.$util.initScript(this.pageData.statsCode, 'initjscode');  //添加第三方统计代码
     },
     getPageData() {
       // 获取数据优先级： url参数id > 本地 sessionStorage > postMessage监听
@@ -87,16 +43,20 @@ export default {
 
       // 本地 sessionStorage获取（实时预览的时候刷新页面）
       let sPageData = this.$util.getSessionStorage("pageData");
-      if (sPageData) { this.pageData = sPageData; return; }
+      if (sPageData) {
+        this.pageData = sPageData;
+        return this.initPage();
+      }
 
       // postMessage监听（实时预览）
       window.addEventListener('message', event => {
         if (event.origin !== this.$api.postMsgoOrigin()) return;
         if (Object.prototype.toString.call(event.data) === '[object Object]') {
-          if (event.data.config && event.data.formList && event.data.list) {
+          if (event.data.list) {
             event.source.postMessage('Received', this.$api.postMsgoUrl());
             this.pageData = event.data;
-            this.$util.setSessionStorage("pageData", event.data);
+            this.initPage()
+            return this.$util.setSessionStorage("pageData", event.data);
           }
         }
       }, false);
@@ -107,3 +67,7 @@ export default {
   }
 };
 </script>
+
+<style lang="stylus">
+@import '~@/assets/css/themes.styl';
+</style>

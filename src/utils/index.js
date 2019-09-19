@@ -196,33 +196,35 @@ export default {
     };
     step();
   },
-	/**
-	 * 添加matomo统计
-	 * @param {Number} id matomo统计id
+  /**
+	 * 执行js代码
+	 * @param {String} jscode js代码
+	 * @param {String} scriptid id标识（相同id只执行一次，不传id每次都会执行）
 	 */
-  addMatomo(id) {
-    if (document.getElementById("matomoCode")) return;
-    let script = document.createElement("script"),
-      jscode = `
-		var _paq = _paq || [];
-		_paq.push(['trackPageView']);
-		_paq.push(['enableLinkTracking']);
-		(function() {
-		  var u="//xxx.com/";
-		  _paq.push(['setTrackerUrl', u+'piwik.php']);
-		  _paq.push(['setSiteId', '${id}']);
-		  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-		  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-		})();
-		`;
+  initScript(jscode, scriptid) {
+    if (typeof jscode !== 'string') return;
+    if (scriptid && document.getElementById(scriptid)) return;
+    jscode = jscode.replace(/[\r\n]/g, '');  //去除换行
+    let arr = jscode.match(/<script(.*)>(.*)<\/script>/);
+    if (Array.isArray(arr) && arr.length >= 3) jscode = arr[2];  //提取js代码
+    let script = document.createElement("script");
+    if (scriptid) script.id = scriptid;
     script.type = "text/javascript";
-    script.id = "matomoCode";
-    try {
-      script.appendChild(document.createTextNode(jscode));
-    } catch (ex) {
-      script.text = jscode;
-    }
+    script.innerHTML = jscode;
     document.head.appendChild(script);
+  },
+  /**
+   * 文本截取换行
+   * @param {String} text 文本字符
+   * @param {String} sign 换行标识 
+   */
+  textBr(text, sign = '\n') {
+    let brstr = '';
+    let arr = text.split(sign);
+    arr.forEach(v => {
+      brstr += v + "</br>"
+    })
+    return brstr;
   },
   /**
    * px转rem
@@ -230,9 +232,21 @@ export default {
    */
   changeRem(str = "") {
     if (this.getType(str) !== 'String') str = str.toString();
-    let nospace = str.replace(/\s+/g, '');
+    let nospace = str.trim();
     return nospace.replace(/(-?\d+)(px)?/g, (a, b) => {
-      return b / 50 + 'rem '
+      return b / 50 + 'rem'
     })
+  },
+  /**
+   * 格式化对象格式样式 px转rem
+   * @param {Object} obj 格式化对象
+   */
+  formatStyle(obj) {
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key) && this.getType(obj[key]) === 'String') {
+        if (obj[key].includes('px')) obj[key] = this.changeRem(obj[key])
+      }
+    }
+    return obj
   }
 }
