@@ -96,7 +96,7 @@ export default {
 	 * @param {String} val 网址
 	 */
   isLink(val){
-    let pattern = /^((https:|http:|:)?\/\/)(?:[\da-z.-]+)\.(?:[a-z.]{2,6})(?:\/\w\.-]*)*\/?/;
+    let pattern = /^(?:(?:https?|ftp):\/\/)?(?:[\da-z.-]+)\.(?:[a-z.]{2,6})(?:\/\w\.-]*)*\/?/;
 		let isLink = pattern.test(val);
 		return isLink;
   },
