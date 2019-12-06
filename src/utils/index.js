@@ -205,6 +205,13 @@ export default {
     if (typeof jscode !== 'string') return;
     if (scriptid && document.getElementById(scriptid)) return;
     jscode = jscode.replace(/[\r\n]/g, '');  //去除换行
+    if (/<script(.*)src=(.*)><\/script>/.test(jscode)) {
+      let arr = jscode.match(/src=["|']?(.*?)('|"|>|\\s+)/);
+      let script = document.createElement("script");
+      script.src = arr[1];
+      document.head.appendChild(script);
+      return;
+    }
     let arr = jscode.match(/<script(.*)>(.*)<\/script>/);
     if (Array.isArray(arr) && arr.length >= 3) jscode = arr[2];  //提取js代码
     let script = document.createElement("script");
@@ -228,12 +235,13 @@ export default {
   },
   /**
    * px转rem
-   * @param {String} str px距离  例如：50px 10px 0 10px
+   * @param {String} str 含 px 字符串  例如：50px 10px 0 10px ; <span style="16px">测试</span>
+   * @return {String} 转化后含rem字符串 例如：1rem 0.3rem 0 0.2rem ; <span style="0.32rem">测试</span>
    */
   changeRem(str = "") {
     if (this.getType(str) !== 'String') str = str.toString();
     let nospace = str.trim();
-    return nospace.replace(/(-?\d+)(px)?/g, (a, b) => {
+    return nospace.replace(/(-?\d+)(px)/g, (a, b) => {
       return b / 50 + 'rem'
     })
   },

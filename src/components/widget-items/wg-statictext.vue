@@ -4,7 +4,7 @@
     @click="jumpH5(item.link)"
     :style="{backgroundColor:item.backgroundColor,backgroundImage:`url(${item.backgroundImage||''})`}"
   >
-    <p :style="$util.formatStyle(item.style)" v-html="$util.textBr(item.value)"></p>
+    <p :style="$util.formatStyle(item.style)" v-html="$util.changeRem(item.value)"></p>
   </div>
 </template>
 
