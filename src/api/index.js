@@ -26,14 +26,14 @@ const Api = {
   previewUrl() {
     if (this.env() === "development") {
       let arr = window.location.origin.split(":");
-      return `${arr[0]}:${arr[1]}:3000`
+      return `${arr[0]}:${arr[1]}:9000`
     }
     return window.location.origin + "/form-design-h5"
   },
   previewOrigin() {
     if (this.env() === "development") {
       let arr = window.location.origin.split(":");
-      return `${arr[0]}:${arr[1]}:3000`
+      return `${arr[0]}:${arr[1]}:9000`
     }
     return window.location.origin
   },
@@ -52,14 +52,14 @@ const Api = {
   postMsgoUrl() {
     if (this.env() === "development") {
       let arr = window.location.origin.split(":");
-      return `${arr[0]}:${arr[1]}:5000`
+      return `${arr[0]}:${arr[1]}:9000`
     }
     return window.location.origin + "/form-design"
   },
   postMsgoOrigin() {
     if (this.env() === "development") {
       let arr = window.location.origin.split(":");
-      return `${arr[0]}:${arr[1]}:5000`
+      return `${arr[0]}:${arr[1]}:9000`
     }
     return window.location.origin
   },
