@@ -1,8 +1,9 @@
 $primary-color = #409EFF;
 
 .widget-list /deep/ {
-  .widget-view.no-padding {
-    padding: 0;
+
+  .wg-padding {
+    padding: 5px 10px;
   }
 
   .widget-form-list {
@@ -14,7 +15,6 @@ $primary-color = #409EFF;
 
   .widget-view {
     margin: 0;
-    padding: 5px 10px;
     // background: #fff;
     position: relative;
 
@@ -137,9 +137,7 @@ $primary-color = #409EFF;
   }
 
   .wg-button {
-    width: 90%;
-    margin: 15px 5%;
-    // background: $primary-color;
+    width: 100%;
     color: #fff;
     height: 46px;
     line-height: 46px;
@@ -155,5 +153,14 @@ $primary-color = #409EFF;
   .wg-splitLine .splitLine-hr {
     border: 0 none;
     border-top: 1px solid #d3d3d3;
+  }
+
+  .wg-fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1111;
   }
 }
