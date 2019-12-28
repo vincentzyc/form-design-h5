@@ -6,7 +6,7 @@
     :style="{...$util.formatStyle(pageData.style),backgroundImage:`url(${pageData.style.backgroundImage})`}"
   >
     <div :class="pageData.template">
-      <RenderPage :list="pageData.list" />
+      <RenderPage :list="pageData.list" :fixedBottom="pageData.fixedBottom"/>
     </div>
   </div>
 </template>
