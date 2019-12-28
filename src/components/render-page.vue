@@ -13,6 +13,13 @@
       </div>
       <WidgetItems v-else ref="wgList" :item="item" :key="item.key" />
     </template>
+    <transition name="fade">
+      <div v-if="fixedBottom.length>0&&showFixedBottom" class="wg-fixed-bottom" style="max-width:640px">
+        <template v-for="fbItem in fixedBottom">
+          <WidgetItems :item="fbItem" :key="fbItem.key" />
+        </template>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -25,12 +32,14 @@ export default {
     WidgetItems
   },
   props: {
-    list: Array
+    list: Array,
+    fixedBottom: Array
   },
   data() {
     return {
       formData: {},
-      showCode: false
+      showCode: false,
+      showFixedBottom:true
     };
   },
   methods: {
@@ -62,6 +71,15 @@ export default {
       }
       this.formData[item.apiKey] = item.value;
     },
+    showFixed() {
+      if (this.fixedBottom.length > 0) {
+        this.showFixedBottom = this.fixedBottom[0].scrollHeight === 0;
+        window.addEventListener('scroll', () => {
+          let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+          this.showFixedBottom = scrollTop >= this.fixedBottom[0].scrollHeight
+        })
+      }
+    },
     busEvent() {
       this.BUS.$on('handleClick', data => {
         switch (data.type) {
@@ -75,7 +93,8 @@ export default {
     }
   },
   created() {
-    this.busEvent()
+    this.busEvent();
+    this.showFixed()
   }
 }
 </script>
