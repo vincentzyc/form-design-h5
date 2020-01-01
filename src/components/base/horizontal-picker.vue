@@ -44,7 +44,9 @@ export default {
     pickerStyle: {
       type: Object,
       default: () => {
-        color: '#d68317';
+        return {
+          color: '#d68317'
+        }
       }
     },
     itemWidth: {
@@ -57,7 +59,6 @@ export default {
     },
     data: {
       type: Array,
-      default: [],
       required: true
     },
     defaultIndex: {
