@@ -46,7 +46,9 @@ export default {
         }).show();
         return;
       }
+      this.$loading.open('正在发送...');
       this.$api.getVerifyCode(this.phone).then(() => {
+        this.$loading.close();
         this.sendcCode();
       })
     }
