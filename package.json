@@ -10,7 +10,8 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "cube-ui": "~1.12.1",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-clipboard2": "^0.3.1"
   },
   "devDependencies": {
     "stylus": "^0.54.5",
