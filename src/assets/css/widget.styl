@@ -1,7 +1,6 @@
 $primary-color = #409EFF;
 
 .widget-list /deep/ {
-
   .wg-padding {
     padding: 5px 10px;
   }
@@ -148,6 +147,37 @@ $primary-color = #409EFF;
     border-radius: 20px;
     text-align: center;
     // box-shadow: 0 3px 10px 1px #90c7ff;
+  }
+
+  .wg-wechat {
+    .wg-wechat-wrap {
+      padding: 10px;
+    }
+
+    .wechat-avatar {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .wechat-btn {
+      text-align: center;
+      padding: 8px 15px;
+    }
+
+    .wechat-popup {
+      width: 80%;
+      margin: 0px auto;
+      text-align: center;
+      padding: 10px;
+
+      .tiptext {
+        font-size: 14px;
+        line-height: 22px;
+      }
+    }
   }
 
   .wg-splitLine .splitLine-hr {
