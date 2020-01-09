@@ -35,6 +35,9 @@
 
     <!-- 分割线 -->
     <wgSplitLine v-if="item.type === 'splitLine'" :item="item" class="wg-padding"/>
+
+    <!-- 微信关注 -->
+    <WgWechat v-if="item.type === 'wechat'" :item="item" />
   </div>
 </template>
 
@@ -51,6 +54,9 @@ import WgButton from "./wg-button"
 import wgSplitLine from "./wg-splitLine"
 import WgImgshow from "./wg-imgshow"
 import WgHorizontalPicker from "./wg-horizontal-picker"
+import WgWechat from './wg-wechat'
+
+
 export default {
   name: "widgetItems",
   components: {
@@ -65,7 +71,8 @@ export default {
     WgStaticText,
     WgImgshow,
     wgImgSlide,
-    WgHorizontalPicker
+    WgHorizontalPicker,
+    WgWechat
   },
   props: {
     item:{
