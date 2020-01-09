@@ -95,10 +95,10 @@ export default {
 	 * 检查网址格式
 	 * @param {String} val 网址
 	 */
-  isLink(val){
+  isLink(val) {
     let pattern = /^(?:(?:https?|ftp):\/\/)?(?:[\da-z.-]+)\.(?:[a-z.]{2,6})(?:\/\w\.-]*)*\/?/;
-		let isLink = pattern.test(val);
-		return isLink;
+    let isLink = pattern.test(val);
+    return isLink;
   },
 	/**
 	 * 倒计时
@@ -219,6 +219,12 @@ export default {
     script.type = "text/javascript";
     script.innerHTML = jscode;
     document.head.appendChild(script);
+  },
+  /**
+   * 判断是微信内还是微信外打开
+   */
+  isWechat() {
+    return /micromessenger/.test(window.navigator.userAgent.toLowerCase());
   },
   /**
    * 文本截取换行
