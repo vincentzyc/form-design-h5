@@ -1,9 +1,13 @@
 <template>
   <div :style="$util.formatStyle(item.style)">
     <ul class="flex flex-wrap" v-if="item.imglist">
-      <li :class="[item.styleType==='col1'?'col-12':'col-6']" v-for="(item,index) in item.imglist" :key="index">
-        <div class="flex flex-center" :class="{'cursor-pointer': $util.isLink(item.link)}" @click="jumpH5(item.link)">
-          <img :src="item.img" alt="图片" width="100%" />
+      <li v-for="(imgitem,index) in item.imglist" :key="index" :class="[item.styleType==='col1'?'col-12':'col-6']">
+        <div
+          class="flex flex-center"
+          :class="{'cursor-pointer': $util.isLink(imgitem.link)}"
+          @click="jumpH5(imgitem.link)"
+        >
+          <img :src="imgitem.img" alt="图片" width="100%" />
         </div>
       </li>
     </ul>
