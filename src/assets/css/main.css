@@ -2,19 +2,36 @@
 
 .wrapper {
 	width: 100%;
-  min-height: 100vh;
-  padding-bottom: 10px;
-  background-color: #fff;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-size: 100% 100%;
+	min-height: 100vh;
+	padding-bottom: 10px;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: 100% 100%;
 }
 
 .wrapper img.banner {
 	vertical-align: top
 }
 
+.cursor-pointer {
+	cursor: pointer;
+}
 
+.col-6 {
+	width: 50%;
+}
+
+.col-12 {
+	width: 100%;
+}
+.fade-enter-active, .fade-leave-active, .slide-left-enter-active, .slide-left-leave-active, .slide-right-enter-active, .slide-right-leave-active {
+	transition: 0.3s;
+}
+
+.fade-enter, .fade-leave-active {
+	opacity: 0;
+}
 
 /* 重置cube-ui样式 */
 
