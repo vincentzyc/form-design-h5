@@ -1,7 +1,7 @@
 <template>
   <div class="wg-imgslide">
     <div :style="{margin:item.style.margin}">
-      <div :style="{width:'100%',height:item.style.height/88.88+'rem'}">
+      <div :style="{width:'100%',height:$util.changeRem(item.style.height+'px')}">
         <cube-slide :ref="item.key" :data="item.value" :interval="item.interval" style="max-width:640px">
           <cube-slide-item v-for="(images, index) in item.value" :key="index">
             <a :href="images.url">
