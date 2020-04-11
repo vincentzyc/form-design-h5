@@ -25,19 +25,22 @@
     <WgImgshow v-if="item.type === 'imgShow'" :item="item" />
 
     <!-- 图片轮播 -->
-    <wgImgSlide v-if="item.type === 'imgSlide'" :item="item" class="wg-padding"/>
+    <wgImgSlide v-if="item.type === 'imgSlide'" :item="item" class="wg-padding" />
 
     <!-- 按钮 -->
     <WgButton v-if="item.type === 'button'" :item="item" />
 
     <!-- 文本描述 -->
-    <WgStaticText v-if="item.type === 'staticText'" :item="item"/>
+    <WgStaticText v-if="item.type === 'staticText'" :item="item" />
 
     <!-- 分割线 -->
-    <wgSplitLine v-if="item.type === 'splitLine'" :item="item" class="wg-padding"/>
+    <wgSplitLine v-if="item.type === 'splitLine'" :item="item" class="wg-padding" />
 
     <!-- 微信关注 -->
     <WgWechat v-if="item.type === 'wechat'" :item="item" />
+
+    <!-- 跑马灯 -->
+    <WgMarquee v-if="item.type === 'marquee'" :item="item" />
   </div>
 </template>
 
@@ -55,6 +58,7 @@ import wgSplitLine from "./wg-splitLine"
 import WgImgshow from "./wg-imgshow"
 import WgHorizontalPicker from "./wg-horizontal-picker"
 import WgWechat from './wg-wechat'
+import WgMarquee from './wg-marquee'
 
 
 export default {
@@ -72,12 +76,13 @@ export default {
     WgImgshow,
     wgImgSlide,
     WgHorizontalPicker,
-    WgWechat
+    WgWechat,
+    WgMarquee
   },
   props: {
-    item:{
-      type:Object,
-      required:true
+    item: {
+      type: Object,
+      required: true
     }
   }
 };
