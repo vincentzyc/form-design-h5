@@ -18,7 +18,7 @@
           v-for="(texts,key) in [...item.textList,...item.textList]"
           :key="key"
           class="flex space-around"
-          :style="{width:$util.changeRem(marqueeWidth+'px')}"
+          :style="{width:marqueeWidth+'px'}"
         >
           <span v-for="(text,i) in texts.split(/\s+/)" :key="i">{{text}}</span>
         </p>
@@ -55,6 +55,7 @@ export default {
     this.$nextTick(() => {
       setTimeout(() => {
         this.marqueeWidth = this.$refs.wgMarquee.offsetWidth || this.$refs.wgMarquee.clientWidth;
+        console.log(this.marqueeWidth);
       }, 10);
     })
   }
