@@ -11,14 +11,22 @@ import store from './store';  // 状态管理实例，用于组件通信（项�
 
 import VueClipboard from 'vue-clipboard2'
 
+import { Popup } from 'vant';
+
 Vue.prototype.$api = Api;
 Vue.prototype.$util = Util;
+
+Vue.use(Popup);
+
+Vue.use(VueClipboard)
 
 Vue.config.productionTip = false
 
 Vue.prototype.BASE_URL = process.env.BASE_URL;
 
 Vue.prototype.BUS = store;
+
+
 
 Vue.use(VueClipboard)
 
