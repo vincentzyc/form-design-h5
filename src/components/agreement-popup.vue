@@ -8,7 +8,8 @@
   </van-popup>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
+// 弹框组件（支持iframe嵌入页面）
 export default {
   name: "AgreementPopup",
   data() {
