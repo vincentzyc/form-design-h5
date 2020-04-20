@@ -10,6 +10,8 @@
 
 <script>
 // 弹框组件（支持iframe嵌入页面）
+// 使用例子： <agreement-popup ref="agreement" />
+// 打开弹框：this.$refs.agreement.open(text);
 export default {
   name: "AgreementPopup",
   data() {
