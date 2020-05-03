@@ -2,6 +2,8 @@ import Vue from 'vue'
 
 const vm = new Vue()
 
+let formData = {}
+
 const ruleList = {
   phone: value => {
     if (!value) return '请输入手机号';
@@ -86,6 +88,14 @@ export function valiDate(obj) {
   return ruleList[obj.apiKey](obj.value)
 }
 
+
+export function handleSubmit() {
+  let valiDateRes = valiAllDate(vm.BUS.pageData.list);
+  if (valiDateRes !== true) return vm.$createToast({ txt: valiDateRes, type: 'txt', time: 2000 }).show()
+  submit(formData);
+}
+
+
 export function submit(data) {
   console.log('提交数据', data);
   vm.$loading.open({
@@ -100,4 +110,30 @@ export function submit(data) {
       content: '提交成功'
     }).show()
   }, 2500);
+}
+
+function valiAllDate(list) {
+  for (const item of list) {
+    if (item.type === "formList") {
+      let res = valiAllDate(item.list);
+      if (res !== true) return res;
+    }
+    if (!item.apiKey) continue;
+    let res = valiDate(item);
+    if (res === true) {
+      formatParam(item);
+      continue
+    }
+    vm.$util.scrollIntoView(document.getElementById(item.key))
+    return res;
+  }
+  return true;
+}
+
+function formatParam(item) {
+  if (!item.hasOwnProperty("apiKey")) return;
+  if (item.type === 'phone' && item.showCode) {
+    formData[item.codeKey] = item.codeValue;
+  }
+  formData[item.apiKey] = item.value;
 }
