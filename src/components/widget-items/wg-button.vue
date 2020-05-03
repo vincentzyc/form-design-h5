@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { handleSubmit } from "@/assets/js/validate"
 export default {
   props: {
     item: {
@@ -20,7 +21,13 @@ export default {
   },
   methods: {
     clickBtn(item) {
-      this.BUS.$emit('handleClick', { type: item.btnType });
+      switch (item.btnType) {
+        case 'submit':
+          handleSubmit()
+          break;
+        default:
+          break;
+      }
     }
   }
 }
