@@ -6,7 +6,7 @@
       :style="{width:$util.changeRem(item.label.labelwidth)}"
     >{{item.label.labelTitle}}</div>
     <div class="flex-auto">
-      <select v-model="item.value" class="wg-select">
+      <select v-model="item.value" class="wg-select" :id="item.key">
         <option value disabled selected hidden>{{item.placeholder}}</option>
         <option v-for="item in item.options" :key="item" :value="item" :label="item.showLabel?item.label:item"></option>
       </select>

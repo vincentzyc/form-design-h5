@@ -6,7 +6,7 @@
     :style="item.style"
   >
     <div class="wg-title" :style="{width:$util.changeRem(item.label.labelwidth)}">{{item.label.labelTitle}}</div>
-    <div class="flex-auto">
+    <div class="flex-auto" :id="item.key">
       <horizontal-picker
         v-model="item.value"
         style="margin: 0 auto;"

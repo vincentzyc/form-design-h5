@@ -8,6 +8,7 @@
       >{{item.label.labelTitle}}</div>
       <div class="flex-auto">
         <input
+          :id="item.key"
           class="wg-input"
           type="tel"
           maxlength="11"

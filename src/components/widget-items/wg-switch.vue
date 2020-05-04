@@ -5,7 +5,7 @@
     :style="item.style"
   >
     <div class="wg-title" :style="{width:$util.changeRem(item.label.labelwidth)}">{{item.label.labelTitle}}</div>
-    <label class="label">
+    <label class="label" :id="item.key">
       <input type="checkbox" class="wg-switch-input" v-model="item.value" style="display:none" />
       <span class="wg-switch-core"></span>
     </label>

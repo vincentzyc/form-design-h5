@@ -1,5 +1,5 @@
 <template>
-  <div class="wg-agreement clearfix">
+  <div class="wg-agreement clearfix" :id="item.key">
     <van-checkbox v-model="item.value" :style="$util.formatStyle(item.style)">
       <p :style="{color:item.style.color}">
         <span>{{item.tipText}}</span>

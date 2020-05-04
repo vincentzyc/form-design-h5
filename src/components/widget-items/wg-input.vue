@@ -6,7 +6,7 @@
       :style="{width:$util.changeRem(item.label.labelwidth)}"
     >{{item.label.labelTitle}}</div>
     <div class="flex-auto">
-      <input v-model="item.value" :placeholder="item.placeholder" class="wg-input" />
+      <input v-model="item.value" :placeholder="item.placeholder" class="wg-input" :id="item.key"/>
     </div>
   </div>
 </template>

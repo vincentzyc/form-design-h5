@@ -5,7 +5,7 @@
     :style="item.style"
   >
     <div class="wg-title" :style="{width:$util.changeRem(item.label.labelwidth)}">{{item.label.labelTitle}}</div>
-    <div class="flex-auto">
+    <div class="flex-auto" :id="item.key">
       <label class="label" v-for="(optionsItem, key) in item.options" :key="optionsItem + key">
         <input
           class="wg-checkbox-input"
