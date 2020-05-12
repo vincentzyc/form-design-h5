@@ -13,7 +13,7 @@
     <!-- 日期选择 -->
     <WgDate v-if="item.type === 'date'" :ref="item.key" :item="item" class="wg-padding" />
     <!-- 横向滑动自动选择 -->
-    <WgHorizontalPicker v-if="item.type === 'h-picker'" :ref="item.key" :item="item" class="wg-padding" />
+    <WgHorizontalPicker v-if="item.type === 'hPicker'" :ref="item.key" :item="item" class="wg-padding" />
     <!-- 图片展示 -->
     <WgImgshow v-if="item.type === 'imgShow'" :item="item" />
     <!-- 图片轮播 -->
