@@ -37,12 +37,13 @@ export default {
   },
   data() {
     return {
-      showFixedBottom:true
+      showFixedBottom: true
     };
   },
   methods: {
     showFixed() {
-      if (this.fixedBottom.length > 0) {
+      if (this.fixedBottom.length <= 0) return
+      if (this.fixedBottom[0] && this.fixedBottom[0].hasOwnProperty('scrollHeight')) {
         this.showFixedBottom = this.fixedBottom[0].scrollHeight === 0;
         window.addEventListener('scroll', () => {
           let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
