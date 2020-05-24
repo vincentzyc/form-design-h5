@@ -1,5 +1,12 @@
 <template>
   <div class="widget-list">
+    <transition name="fade" v-if="fixedCustom.length>0">
+      <div ref="fixedCustom" class="wg-fixed-custom" style="max-width:640px">
+        <template v-for="fcItem in fixedCustom">
+          <WidgetItems :item="fcItem" :key="fcItem.key" class="fixed-item" :style="fixedCustomStyle(fcItem)" />
+        </template>
+      </div>
+    </transition>
     <template v-for="item in list">
       <div
         v-if="item.type === 'formList'"
@@ -33,7 +40,14 @@ export default {
   },
   props: {
     list: Array,
-    fixedBottom: Array
+    fixedCustom: {
+      type: Array,
+      default: () => []
+    },
+    fixedBottom: {
+      type: Array,
+      default: () => []
+    }
   },
   data() {
     return {
@@ -41,6 +55,15 @@ export default {
     };
   },
   methods: {
+    fixedCustomStyle(item) {
+      if (item.position) {
+        return this.$util.formatStyle({
+          width: item.style.width,
+          top: item.position.top + 'px',
+          [item.position.side]: item.position[item.position.side] + '%'
+        })
+      }
+    },
     showFixed() {
       if (this.fixedBottom.length <= 0) return
       if (this.fixedBottom[0] && this.fixedBottom[0].hasOwnProperty('scrollHeight')) {
