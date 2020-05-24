@@ -220,4 +220,40 @@ $primary-color = #409EFF;
     -o-animation: marquee-left 5s linear infinite;
     animation: marquee-left 5s linear infinite;
   }
+
+  .wg-marquee-single {
+    .scroll-wrapper {
+      overflow: hidden;
+      padding: 0;
+      margin: 0 auto;
+
+      .scroll-item {
+        height: 100%;
+        padding: 2px;
+      }
+
+      .userimg {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: 0 center;
+        background-size: 100% 100%;
+      }
+
+      .man {
+        background-image: url('~@/assets/img/widget/marquee/manhead.png');
+      }
+
+      .woman {
+        background-image: url('~@/assets/img/widget/marquee/womanhead.png');
+      }
+
+      .scroll-text {
+        margin-left: 5px;
+      }
+
+      .anim {
+        transition: all 0.5s linear;
+      }
+    }
+  }
 }
