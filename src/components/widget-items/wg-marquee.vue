@@ -7,7 +7,7 @@
   >
     <div
       :class="inlineClass"
-      :style="{animation:`marquee-${this.item.direction} ${this.item.durationTime}s linear infinite`}"
+      :style="{animation:`marquee-${this.item.direction} ${this.item.durationTime}s 0.2s linear infinite`}"
     >
       <template v-if="item.isImgBtn">
         <img v-if="item.imgUrl" :src="item.imgUrl" alt="图片" :style="imgStyle" />
