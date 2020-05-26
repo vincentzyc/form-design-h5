@@ -201,6 +201,19 @@ $primary-color = #409EFF;
     z-index: 1111;
   }
 
+  .wg-fixed-custom {
+    position: fixed;
+    z-index: 1211;
+    width: 375px;
+    height: 0 !important;
+
+    .fixed-item {
+      position: absolute !important;
+      top: 0;
+      transition: 0.5s;
+    }
+  }
+
   .wg-marquee {
     height: 50px;
     overflow: hidden;
