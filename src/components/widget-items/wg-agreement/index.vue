@@ -19,7 +19,7 @@
 
 <script>
 import { Checkbox } from 'vant';
-import AgreementPopup from '@/components/agreement-popup.vue'
+import AgreementPopup from './agreement-popup.vue'
 export default {
   components: {
     "agreement-popup": AgreementPopup,
