@@ -11,11 +11,11 @@ import WgCheckbox from "./wg-checkbox"
 import WgSelect from "./wg-select"
 import WgSwitch from "./wg-switch"
 import WgDate from "./wg-date"
+import WgImgShow from "./wg-imgshow"
 import wgImgSlide from "./wg-imgslide"
 import WgStaticText from "./wg-statictext"
 import WgButton from "./wg-button"
 import wgSplitLine from "./wg-splitLine"
-import WgImgshow from "./wg-imgshow"
 import WgHorizontalPicker from "./wg-horizontal-picker"
 import WgWechat from './wg-wechat'
 import WgMarquee from './wg-marquee'
@@ -34,7 +34,7 @@ export default {
     WgButton,
     wgSplitLine,
     WgStaticText,
-    WgImgshow,
+    WgImgShow,
     wgImgSlide,
     WgHorizontalPicker,
     WgWechat,
@@ -60,7 +60,7 @@ export default {
         button: 'WgButton',
         splitLine: 'wgSplitLine',
         staticText: 'WgStaticText',
-        imgshow: 'WgImgshow',
+        imgShow: 'WgImgShow',
         imgSlide: 'wgImgSlide',
         hPicker: 'WgHorizontalPicker',
         wechat: 'WgWechat',
