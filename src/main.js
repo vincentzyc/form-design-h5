@@ -11,12 +11,17 @@ import store from './store';  // 状态管理实例，用于组件通信（项�
 
 import VueClipboard from 'vue-clipboard2'
 
-import { Popup } from 'vant';
+import { Popup, Lazyload } from 'vant';
 
 Vue.prototype.$api = Api;
 Vue.prototype.$util = Util;
 
 Vue.use(Popup)
+
+Vue.use(Lazyload, {
+  lazyComponent: true,
+  preLoad: 1.6
+});
 
 Vue.use(VueClipboard)
 
@@ -27,5 +32,5 @@ Vue.prototype.BASE_URL = process.env.BASE_URL;
 Vue.prototype.BUS = store;
 
 new Vue({
-	render: h => h(App)
+  render: h => h(App)
 }).$mount('#app')

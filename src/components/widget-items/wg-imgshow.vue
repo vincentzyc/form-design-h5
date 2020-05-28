@@ -7,7 +7,7 @@
           :class="{'cursor-pointer': $util.isLink(imgitem.link)}"
           @click="jumpH5(imgitem.link)"
         >
-          <img :src="imgitem.img" alt="图片" width="100%" />
+          <img v-lazy="imgitem.img" alt="图片" width="100%" />
         </div>
       </li>
     </ul>
