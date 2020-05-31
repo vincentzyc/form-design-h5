@@ -1,5 +1,15 @@
 <template>
   <div class="widget-list">
+    <template v-if="fixedTop.length>0">
+      <transition name="fade">
+        <div v-show="showFixedTop" class="wg-fixed-top" style="max-width:640px">
+          <template v-for="ftItem in fixedTop">
+            <WidgetItems :item="ftItem" :key="ftItem.key" />
+          </template>
+        </div>
+      </transition>
+    </template>
+
     <transition name="fade" v-if="fixedCustom.length>0">
       <div ref="fixedCustom" class="wg-fixed-custom" style="max-width:640px">
         <template v-for="fcItem in fixedCustom">
@@ -20,13 +30,16 @@
       </div>
       <WidgetItems v-else ref="wgList" :item="item" :key="item.key" />
     </template>
-    <transition name="fade">
-      <div v-if="fixedBottom.length>0&&showFixedBottom" class="wg-fixed-bottom" style="max-width:640px">
-        <template v-for="fbItem in fixedBottom">
-          <WidgetItems :item="fbItem" :key="fbItem.key" />
-        </template>
-      </div>
-    </transition>
+
+    <template v-if="fixedBottom.length>0">
+      <transition name="fade">
+        <div v-show="showFixedBottom" class="wg-fixed-bottom" style="max-width:640px">
+          <template v-for="fbItem in fixedBottom">
+            <WidgetItems :item="fbItem" :key="fbItem.key" />
+          </template>
+        </div>
+      </transition>
+    </template>
   </div>
 </template>
 
@@ -40,6 +53,10 @@ export default {
   },
   props: {
     list: Array,
+    fixedTop: {
+      type: Array,
+      default: () => []
+    },
     fixedCustom: {
       type: Array,
       default: () => []
@@ -51,7 +68,8 @@ export default {
   },
   data() {
     return {
-      showFixedBottom: true
+      showFixedBottom: true,
+      showFixedTop: true,
     };
   },
   methods: {
@@ -65,14 +83,16 @@ export default {
       }
     },
     showFixed() {
-      if (this.fixedBottom.length <= 0) return
-      if (this.fixedBottom[0] && this.fixedBottom[0].hasOwnProperty('scrollHeight')) {
-        this.showFixedBottom = this.fixedBottom[0].scrollHeight === 0;
-        window.addEventListener('scroll', () => {
-          let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-          this.showFixedBottom = scrollTop >= this.fixedBottom[0].scrollHeight
-        })
-      }
+      if (this.fixedBottom.length <= 0 && this.fixedTop.length <= 0) return
+      let fbData = this.fixedBottom.length > 0 ? this.fixedBottom[0] : '';
+      let ftData = this.fixedTop.length > 0 ? this.fixedTop[0] : '';
+      if (fbData.hasOwnProperty('scrollHeight')) this.showFixedBottom = fbData.scrollHeight === 0;
+      if (ftData.hasOwnProperty('scrollHeight')) this.showFixedTop = ftData.scrollHeight === 0;
+      window.addEventListener('scroll', () => {
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if (fbData.hasOwnProperty('scrollHeight')) this.showFixedBottom = scrollTop >= fbData.scrollHeight
+        if (ftData.hasOwnProperty('scrollHeight')) this.showFixedTop = scrollTop >= ftData.scrollHeight
+      })
     }
   },
   created() {
