@@ -5,14 +5,12 @@
     :class="pageData.theme"
     :style="{...$util.formatStyle(pageData.style),backgroundImage:`url(${pageData.style.backgroundImage})`}"
   >
-    <div :class="pageData.template">
-      <RenderPage
-        :list="pageData.list"
-        :fixedTop="pageData.fixedTop"
-        :fixedBottom="pageData.fixedBottom"
-        :fixedCustom="pageData.fixedCustom"
-      />
-    </div>
+    <RenderPage
+      :list="pageData.list"
+      :fixedTop="pageData.fixedTop"
+      :fixedBottom="pageData.fixedBottom"
+      :fixedCustom="pageData.fixedCustom"
+    />
   </div>
 </template>
 
