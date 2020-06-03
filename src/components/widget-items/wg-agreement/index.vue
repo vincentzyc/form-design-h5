@@ -1,6 +1,6 @@
 <template>
   <div class="wg-agreement clearfix" :id="item.key">
-    <van-checkbox v-model="item.value" :style="$util.formatStyle(item.style)">
+    <van-checkbox v-model="item.value" :style="$util.formatStyle(item.style)" shape="square">
       <p :style="{color:item.style.color}">
         <span>{{item.tipText}}</span>
         <span v-for="(titleText,key) in item.titleTexts" :key="key">
