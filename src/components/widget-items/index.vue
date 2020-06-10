@@ -21,6 +21,7 @@ import WgWechat from './wg-wechat'
 import WgMarquee from './wg-marquee'
 import WgAgreement from './wg-agreement'
 import WgMarqueeSingle from './wg-marquee-single'
+import WgVideoPlay from './wg-video-play'
 
 export default {
   name: "widgetItems",
@@ -40,7 +41,8 @@ export default {
     WgWechat,
     WgMarquee,
     WgAgreement,
-    WgMarqueeSingle
+    WgMarqueeSingle,
+    WgVideoPlay
   },
   props: {
     item: {
@@ -66,7 +68,8 @@ export default {
         wechat: 'WgWechat',
         marquee: 'WgMarquee',
         agreement: 'WgAgreement',
-        marqueeSingle: 'WgMarqueeSingle'
+        marqueeSingle: 'WgMarqueeSingle',
+        videoPlay: 'WgVideoPlay'
       }
     }
   }
