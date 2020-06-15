@@ -55,7 +55,6 @@ export default {
     this.$nextTick(() => {
       setTimeout(() => {
         this.marqueeWidth = this.$refs.wgMarquee.offsetWidth || this.$refs.wgMarquee.clientWidth;
-        console.log(this.marqueeWidth);
       }, 10);
     })
   }
