@@ -22,6 +22,7 @@ import WgMarquee from './wg-marquee'
 import WgAgreement from './wg-agreement'
 import WgMarqueeSingle from './wg-marquee-single'
 import WgVideoPlay from './wg-video-play'
+import WgSms from './wg-sms'
 
 export default {
   name: "widgetItems",
@@ -42,7 +43,8 @@ export default {
     WgMarquee,
     WgAgreement,
     WgMarqueeSingle,
-    WgVideoPlay
+    WgVideoPlay,
+    WgSms
   },
   props: {
     item: {
@@ -69,7 +71,8 @@ export default {
         marquee: 'WgMarquee',
         agreement: 'WgAgreement',
         marqueeSingle: 'WgMarqueeSingle',
-        videoPlay: 'WgVideoPlay'
+        videoPlay: 'WgVideoPlay',
+        sms: 'WgSms'
       }
     }
   }
