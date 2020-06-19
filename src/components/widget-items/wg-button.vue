@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { handleSubmit } from "@/assets/js/validate"
+import { handleSubmit } from "@/validate"
 export default {
   props: {
     item: {
