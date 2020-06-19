@@ -2,7 +2,6 @@ import Vue from 'vue';
 
 import Loading from "./loading"; // loading
 import ValidateCodeBtn from "./validate-code-btn"; // 验证码按钮
-import HorizontalPicker from "./horizontal-picker"; // 横向滑动自动选择组件
 
 let MyPlugin = {};
 
@@ -11,7 +10,6 @@ MyPlugin.install = function(Vue) {
 	if (this.installed) return;
 
   Vue.component(ValidateCodeBtn.name, ValidateCodeBtn); //注册组件
-  Vue.component(HorizontalPicker.name, HorizontalPicker); //注册组件
 
 	Vue.$loading = Vue.prototype.$loading = Loading; //注册全局方法组件
 

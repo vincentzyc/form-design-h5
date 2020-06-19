@@ -31,7 +31,7 @@ const ITEM_WIDTH = 48;
 const SHOW_NUMBER = 5;
 
 export default {
-  name: "horizontal-picker",
+  name: "HorizontalPicker",
   props: {
     value: {
       type: [String, Number],
