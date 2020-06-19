@@ -19,7 +19,11 @@
   </div>
 </template>
 <script>
+import HorizontalPicker from "../base/horizontal-picker"
 export default {
+  components: {
+    'horizontal-picker': HorizontalPicker
+  },
   props: {
     item: {
       type: Object,
