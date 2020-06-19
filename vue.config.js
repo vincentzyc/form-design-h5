@@ -1,7 +1,11 @@
 module.exports = {
   publicPath: "./",
   outputDir: "docs",
-	productionSourceMap: false,
+  productionSourceMap: false,
+  
+  chainWebpack: config => {
+    config.plugins.delete('prefetch')
+  },
 
 	devServer: {
 		port: 9010,
