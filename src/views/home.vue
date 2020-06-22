@@ -17,6 +17,7 @@
 <script>
 // @ is an alias to /src
 import RenderPage from "@/components/render-page";
+import '@/assets/css/themes.styl';
 
 export default {
   name: "home",
@@ -25,8 +26,7 @@ export default {
   },
   data() {
     return {
-      pageData: null,
-      // formData: null
+      pageData: null
     };
   },
   methods: {
@@ -70,7 +70,3 @@ export default {
   }
 };
 </script>
-
-<style lang="stylus">
-@import '~@/assets/css/themes.styl';
-</style>
