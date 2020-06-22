@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       pageData: null
-    };
+    }
   },
   methods: {
     async initPage() {
