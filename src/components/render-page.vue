@@ -40,6 +40,22 @@
         </div>
       </transition>
     </template>
+
+    <van-dialog
+      v-if="BUS.pageData.hijackBack"
+      v-model="backAlert"
+      get-container="body"
+      :showConfirmButton="false"
+      :style="{'background-color': 'transparent'}"
+    >
+      <img
+        :src="BUS.pageData.hijackBack.alertImg"
+        alt="图片"
+        class="flex"
+        width="100%"
+        @click="clickAlertImg(BUS.pageData.hijackBack.alertLink)"
+      />
+    </van-dialog>
   </div>
 </template>
 
@@ -70,6 +86,7 @@ export default {
     return {
       showFixedBottom: true,
       showFixedTop: true,
+      backAlert: false
     };
   },
   methods: {
@@ -93,10 +110,29 @@ export default {
         if (fbData.hasOwnProperty('scrollHeight')) this.showFixedBottom = scrollTop >= fbData.scrollHeight
         if (ftData.hasOwnProperty('scrollHeight')) this.showFixedTop = scrollTop >= ftData.scrollHeight
       })
+    },
+    clickAlertImg(link) {
+      let isLink = this.$util.isLink(link);
+      if (!isLink) link = window.location.href;
+      window.location.href = link;
+    },
+    hijackBack() {
+      if (window.history.pushState) {
+        window.history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', this.handleBack, false);
+      }
+    },
+    handleBack() {
+      this.backAlert = true;
+      this.$api.reportMatomo('劫持返回弹框')
+      // console.log("点击了浏览器的返回按钮");
+      // history.pushState(null, null, document.URL);
+      // window.history.back();
     }
   },
   created() {
-    this.showFixed()
+    this.showFixed();
+    if (this.BUS.pageData?.hijackBack?.isHijack) this.hijackBack()
   }
 }
 </script>
