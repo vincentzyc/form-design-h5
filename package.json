@@ -15,6 +15,7 @@
     "vue-clipboard2": "^0.3.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.10.3",
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
