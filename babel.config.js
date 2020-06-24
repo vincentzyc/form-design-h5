@@ -11,6 +11,7 @@ module.exports = {
         "style": true
       },
       "vant"
-    ]
+    ],
+    ["@babel/plugin-proposal-optional-chaining"]  //可选链语法
   ]
 }
