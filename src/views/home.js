@@ -1,29 +1,8 @@
-<template>
-  <div
-    v-if="pageData"
-    class="wrapper"
-    :class="pageData.theme"
-    :style="{...$util.formatStyle(pageData.style),backgroundImage:`url(${pageData.style.backgroundImage})`}"
-  >
-    <RenderPage
-      :list="pageData.list"
-      :fixedTop="pageData.fixedTop"
-      :fixedBottom="pageData.fixedBottom"
-      :fixedCustom="pageData.fixedCustom"
-    />
-  </div>
-</template>
-
-<script>
-// @ is an alias to /src
 import RenderPage from "@/components/render-page";
 import '@/assets/css/themes.styl';
 
 export default {
   name: "home",
-  components: {
-    RenderPage,
-  },
   data() {
     return {
       pageData: null
@@ -67,6 +46,23 @@ export default {
   },
   created() {
     this.getPageData();
+  },
+  render() {
+    if (!this.pageData) return null;
+    const wrapStyle = {
+      ...this.$util.formatStyle(this.pageData.style),
+      backgroundImage: `url(${this.pageData.style.backgroundImage})`
+    }
+    return <div
+      class={['wrapper', this.pageData.theme]}
+      style={wrapStyle}
+    >
+      <RenderPage
+        list={this.pageData.list}
+        fixedTop={this.pageData.fixedTop}
+        fixedBottom={this.pageData.fixedBottom}
+        fixedCustom={this.pageData.fixedCustom}
+      />
+    </div>
   }
 };
-</script>
