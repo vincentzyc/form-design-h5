@@ -1,10 +1,3 @@
-<template>
-  <div class="widget-view" :key="item.key">
-    <component :is="wgNameMap[item.type]" :item="item" />
-  </div>
-</template>
-
-<script>
 import WgPhone from "./wg-phone"
 import WgInput from "./wg-input"
 import WgCheckbox from "./wg-checkbox"
@@ -71,6 +64,13 @@ export default {
         sms: 'WgSms'
       }
     }
+  },
+  render() {
+    const Widget = this.wgNameMap[this.item.type];
+    return (
+      <div class="widget-view">
+        <Widget item={this.item} />
+      </div>
+    )
   }
-};
-</script>
+}
