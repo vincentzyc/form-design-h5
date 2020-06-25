@@ -53,16 +53,18 @@ export default {
       ...this.$util.formatStyle(this.pageData.style),
       backgroundImage: `url(${this.pageData.style.backgroundImage})`
     }
-    return <div
-      class={['wrapper', this.pageData.theme]}
-      style={wrapStyle}
-    >
-      <RenderPage
-        list={this.pageData.list}
-        fixedTop={this.pageData.fixedTop}
-        fixedBottom={this.pageData.fixedBottom}
-        fixedCustom={this.pageData.fixedCustom}
-      />
-    </div>
+    return (
+      <div
+        class={['wrapper', this.pageData.theme]}
+        style={wrapStyle}
+      >
+        <RenderPage
+          list={this.pageData.list}
+          fixedTop={this.pageData.fixedTop}
+          fixedBottom={this.pageData.fixedBottom}
+          fixedCustom={this.pageData.fixedCustom}
+        />
+      </div>
+    )
   }
 };
