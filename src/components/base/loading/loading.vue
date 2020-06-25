@@ -62,7 +62,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: transparent;
-  z-index: 99;
+  z-index: 9999;
 }
 .yun-loading-wrapper {
   position: fixed;
