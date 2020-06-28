@@ -18,11 +18,32 @@ export default {
     }
   },
   methods: {
+    /**
+     * 倒计时
+     * @param {Number} time  倒计时秒数
+     * @param {Function} tickFunc  每秒回调
+     * @param {Function} done     结束后回调
+     */
+    countDown(time, tickFunc, done) {
+      let tick = () => {
+        setTimeout(() => {
+          if (time > 0) {
+            time--;
+            tickFunc(time);
+            tick();
+          } else {
+            done();
+            return;
+          }
+        }, 1000);
+      };
+      tick();
+    },
     sendcCode() {
       this.disbtn = true;
       this.codetxt = "重新发送";
       this.time = "60";
-      this.$util.countDown(
+      this.countDown(
         this.time,
         tick => {
           this.time = tick;
