@@ -3,10 +3,10 @@
     <div
       class="wg-title"
       v-show="item.showLabel"
-      :style="{width:$util.changeRem(item.label.labelwidth)}"
+      :style="{width:$util.changeRem(item.label.labelWidth)}"
     >{{item.label.labelTitle}}</div>
     <div class="flex-auto">
-      <input v-model="item.value" :placeholder="item.placeholder" class="wg-input" :id="item.key"/>
+      <input v-model="item.value" :placeholder="item.placeholder" class="wg-input" :id="item.key" />
     </div>
   </div>
 </template>
