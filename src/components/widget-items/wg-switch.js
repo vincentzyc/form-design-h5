@@ -1,15 +1,14 @@
 import Utils from '../../utils'
 
 export default {
-  functional: true,
   props: {
     item: {
       type: Object,
       required: true
     }
   },
-  render(h, context) {
-    const { item } = context.props;
+  render() {
+    const { item } = this;
     const wrapClass = ['wg-item', 'wg-switch', item.label.labelPosition === 'top' ? 'flex-column' : 'align-middle']
     return (
       <div
