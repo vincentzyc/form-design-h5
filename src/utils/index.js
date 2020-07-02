@@ -100,6 +100,11 @@ export default {
     let isLink = pattern.test(val);
     return isLink;
   },
+  jumpLink(link) {
+    let isLink = this.isLink(link);
+    if (!isLink) return;
+    window.location.href = link
+  },
 	/**
    * 滑动到指定位置的缓冲动画函数
    * @param {Object} dom 目标dom
