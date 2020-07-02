@@ -14,7 +14,7 @@ export default {
 
     return (
       <div style={Utils.formatStyle(item.style)}>
-        {item.imglist ?
+        {item.imglist && (
           <ul class="flex flex-wrap">
             {item.imglist.map((imgitem, index) => (
               <li key={index} class={[item.styleType === 'col1' ? 'col-12' : 'col-6']}>
@@ -23,7 +23,8 @@ export default {
                 </div>
               </li>
             ))}
-          </ul> : null}
+          </ul>
+        )}
       </div>
     )
   }
