@@ -14,22 +14,16 @@ export default {
 
     return (
       <div style={Utils.formatStyle(item.style)}>
-        {
-          item.imglist ?
-            <ul class="flex flex-wrap">
-              {item.imglist.map((imgitem, index) => (
-                <li key={index} class={[item.styleType === 'col1' ? 'col-12' : 'col-6']}>
-                  <div
-                    class={imgWrapClass(imgitem.link)}
-                    onClick={() => Utils.jumpLink(imgitem.link)}
-                  >
-                    <img alt="图片" width="100%" {...{ directives: [{ name: 'lazy', value: imgitem.img }] }} />
-                  </div>
-                </li>
-              ))}
-            </ul> : null
-        }
-
+        {item.imglist ?
+          <ul class="flex flex-wrap">
+            {item.imglist.map((imgitem, index) => (
+              <li key={index} class={[item.styleType === 'col1' ? 'col-12' : 'col-6']}>
+                <div class={imgWrapClass(imgitem.link)} onClick={() => Utils.jumpLink(imgitem.link)}>
+                  <img alt="图片" width="100%" {...{ directives: [{ name: 'lazy', value: imgitem.img }] }} />
+                </div>
+              </li>
+            ))}
+          </ul> : null}
       </div>
     )
   }
