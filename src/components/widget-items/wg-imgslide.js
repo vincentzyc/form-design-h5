@@ -1,4 +1,3 @@
-<script>
 import Utils from '@/utils/index'
 
 export default {
@@ -33,4 +32,3 @@ export default {
     )
   }
 }
-</script>
