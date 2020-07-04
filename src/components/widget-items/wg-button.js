@@ -1,33 +1,35 @@
-import { handleSubmit } from "../../validate"
+import { handleSubmit } from "@/validate/index"
+import Utils from '@/utils/index'
+
+function clickBtn(item) {
+  switch (item.btnType) {
+    case 'submit':
+      handleSubmit()
+      break;
+    default:
+      break;
+  }
+}
+
 export default {
+  functional: true,
   props: {
     item: {
       type: Object,
       required: true
     }
   },
-  methods: {
-    clickBtn(item) {
-      switch (item.btnType) {
-        case 'submit':
-          handleSubmit()
-          break;
-        default:
-          break;
-      }
-    }
-  },
-  render() {
-    const { item } = this;
+  render(h, context) {
+    const { item } = context.props;
     const children = item.style.isImgBtn ?
-      <img src={item.style.value} alt="图片按钮" width="100%" onClick={() => this.clickBtn(item)} />
+      <img src={item.style.value} alt="图片按钮" width="100%" onClick={() => clickBtn(item)} />
       : <button
         class="wg-button"
-        style={this.$util.formatStyle(item.style.btnStyle)}
-        onClick={() => this.clickBtn(item)}
+        style={Utils.formatStyle(item.style.btnStyle)}
+        onClick={() => clickBtn(item)}
       >{item.btnText}</button>
     return (
-      <div class="flex flex-center" style={this.$util.formatStyle(item.style)}>
+      <div class="flex flex-center" style={Utils.formatStyle(item.style)}>
         {children}
       </div >
     )
