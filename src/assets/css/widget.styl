@@ -50,6 +50,7 @@ $primary-color = #409EFF;
   }
 
   .wg-input, .wg-select {
+    position: relative;
     width: 100%;
     height: 40px;
     margin: 5px 0;
@@ -59,8 +60,14 @@ $primary-color = #409EFF;
     border: 1px solid #ddd;
     outline: none;
     text-indent: 10px;
-    // background: #fff;
     transition: 0.3s;
+  }
+
+  .wg-select > .cubeic-select {
+    position: absolute;
+    right: 5px;
+    color: #666;
+    font-size: 14px;
   }
 
   .wg-title {
