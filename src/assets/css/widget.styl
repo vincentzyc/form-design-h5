@@ -49,7 +49,7 @@ $primary-color = #409EFF;
     margin: -5px -10px;
   }
 
-  .wg-input, .wg-select {
+  .wg-input {
     position: relative;
     width: 100%;
     height: 40px;
@@ -63,7 +63,18 @@ $primary-color = #409EFF;
     transition: 0.3s;
   }
 
-  .wg-select > .cubeic-select {
+  .disabled-input {
+    position: relative;
+  }
+
+  .disabled-input .wg-input {
+    background-color: #fff;
+    color: #666;
+    -webkit-text-fill-color: #666;
+    opacity: 1;
+  }
+
+  .disabled-input > .cubeic-select {
     position: absolute;
     right: 5px;
     color: #666;
