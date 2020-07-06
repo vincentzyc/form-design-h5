@@ -131,7 +131,7 @@ function valiAllDate(list) {
 }
 
 function formatParam(item) {
-  if (!item.hasOwnProperty("apiKey")) return;
+  if (!Object.prototype.hasOwnProperty.call(item,'apiKey')) return;
   if (item.type === 'phone' && item.showCode) {
     formData[item.codeKey] = item.codeValue;
   }
