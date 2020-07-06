@@ -216,7 +216,7 @@ export default {
    */
   formatStyle(obj) {
     for (const key in obj) {
-      if (obj.hasOwnProperty(key) && this.getType(obj[key]) === 'String') {
+      if (Object.prototype.hasOwnProperty.call(obj, key) && this.getType(obj[key]) === 'String') {
         if (obj[key].includes('px')) obj[key] = this.changeRem(obj[key])
       }
     }
