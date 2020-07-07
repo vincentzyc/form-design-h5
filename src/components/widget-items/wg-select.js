@@ -39,16 +39,14 @@ export default {
           v-show={item.showLabel}
           style={{ width: Utils.changeRem(item.label.labelwidth) }}
         >{item.label.labelTitle}</div>
-        <div class="flex-auto">
-          <div
+        <div class="flex-auto disabled-input" onClick={this.showPicker}>
+          <input
+            disabled
             id={item.key}
+            vModel={item.value}
             placeholder={item.placeholder}
-            class="wg-select flex align-middle"
-            readonly
-            onClick={this.showPicker} >
-            {item.value ? item.value : item.placeholder}
-            <i class="cubeic-select"></i>
-          </div>
+            class="wg-input" />
+          <i class="cubeic-select"></i>
         </div>
       </div>
     )
