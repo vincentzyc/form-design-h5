@@ -1,4 +1,4 @@
-import WidgetItems from "@/components/widget-items";
+import WidgetItems from "@/components/widget-items/index";
 import '@/assets/css/widget.styl';
 
 export default {
@@ -47,12 +47,12 @@ export default {
       if (this.fixedBottom.length <= 0 && this.fixedTop.length <= 0) return
       let fbData = this.fixedBottom.length > 0 ? this.fixedBottom[0] : '';
       let ftData = this.fixedTop.length > 0 ? this.fixedTop[0] : '';
-      if (fbData.hasOwnProperty('scrollHeight')) this.showFixedBottom = fbData.scrollHeight === 0;
-      if (ftData.hasOwnProperty('scrollHeight')) this.showFixedTop = ftData.scrollHeight === 0;
+      if (Object.prototype.hasOwnProperty.call(fbData, 'scrollHeight')) this.showFixedBottom = fbData.scrollHeight === 0;
+      if (Object.prototype.hasOwnProperty.call(ftData, 'scrollHeight')) this.showFixedTop = ftData.scrollHeight === 0;
       window.addEventListener('scroll', () => {
         let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        if (fbData.hasOwnProperty('scrollHeight')) this.showFixedBottom = scrollTop >= fbData.scrollHeight
-        if (ftData.hasOwnProperty('scrollHeight')) this.showFixedTop = scrollTop >= ftData.scrollHeight
+        if (Object.prototype.hasOwnProperty.call(fbData, 'scrollHeight')) this.showFixedBottom = scrollTop >= fbData.scrollHeight
+        if (Object.prototype.hasOwnProperty.call(ftData, 'scrollHeight')) this.showFixedTop = scrollTop >= ftData.scrollHeight
       })
     },
     clickAlertImg(link) {
