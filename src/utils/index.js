@@ -180,6 +180,33 @@ export default {
     document.head.appendChild(script);
   },
   /**
+   * 判断Android还是iOS
+   */
+  checkDevice() {
+    let u = navigator.userAgent;
+    let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isAndroid) {
+      return 'Android';
+    } else if (isiOS) {
+      return 'iOS';
+    } else {
+      return 'others';
+    }
+  },
+  /**
+   * 判断是否QQ内置浏览器
+   */
+  isQQInternalBrowser() {
+    return window.navigator.userAgent.toLowerCase().indexOf(' qq') > -1
+  },
+  /**
+   * 判断是否QQ内置浏览器
+   */
+  isUCBrowser() {
+    return window.navigator.userAgent.indexOf('UCBrowser') > -1
+  },
+  /**
    * 判断是微信内还是微信外打开
    */
   isWechat() {
