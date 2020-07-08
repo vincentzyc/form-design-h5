@@ -1,7 +1,3 @@
-<template>
-  <button class="getVerCode-btn" :disabled="disbtn" @click="getCode()">{{codetxt}} {{time}}</button>
-</template>
-
 <script type="text/ecmascript-6">
 // 使用例子 <ValidateCodeBtn :phone="phone"/>
 export default {
@@ -73,6 +69,11 @@ export default {
         this.sendcCode();
       })
     }
+  },
+  render() {
+    return (
+      <button class="getVerCode-btn" disabled={this.disbtn} onClick={() => this.getCode()}>{this.codetxt} {this.time}</button>
+    )
   }
 };
 </script>
