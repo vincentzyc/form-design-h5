@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 import Loading from "./loading"; // loading
-import ValidateCodeBtn from "./validate-code-btn"; // 验证码按钮
+import ValidateCodeBtn from "./validate-code-btn/index"; // 验证码按钮
 
 let MyPlugin = {};
 
