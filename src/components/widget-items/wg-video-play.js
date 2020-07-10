@@ -1,4 +1,4 @@
-import Utils from '../../utils'
+import Utils from '@/utils/index'
 export default {
   functional: true,
   props: {
