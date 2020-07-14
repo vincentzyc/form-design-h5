@@ -1,6 +1,6 @@
 import Utils from '@/utils/index'
 import { Checkbox } from 'vant';
-import AgreementPopup from './agreement-popup.vue'
+import AgreementPopup from './agreement-popup'
 export default {
   props: {
     item: {
