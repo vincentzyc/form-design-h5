@@ -75,16 +75,23 @@ const ruleList = {
   city: value => {
     if (!value) return '请选择城市';
     return true;
+  },
+  agreement: value => {
+    if (!value) return '请勾选同意相关协议';
+    return true;
   }
 }
 
 export function valiDate(obj) {
+  if (typeof (obj.isRequired) !== 'boolean') obj.isRequired = true; //默认必填
+  if (obj.isRequired && obj.value === '') return obj.placeholder || '请完善信息';
   if (!ruleList[obj.apiKey]) return true;
   if (obj.apiKey === 'phone') {
     if (ruleList[obj.apiKey](obj.value) === true) {
       return obj.showCode ? ruleList[obj.codeKey](obj.codeValue) : true
     }
   }
+  if (obj.isRequired === false && (obj.value === '' || obj.value === false)) return true;
   return ruleList[obj.apiKey](obj.value)
 }
 
