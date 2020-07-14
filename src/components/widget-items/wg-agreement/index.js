@@ -1,4 +1,3 @@
-
 import Utils from '@/utils/index'
 import { Checkbox } from 'vant';
 import AgreementPopup from './agreement-popup.vue'
@@ -14,7 +13,8 @@ export default {
     }
   },
   methods: {
-    openAgreement(title, text) {
+    openAgreement(text, event) {
+      event.stopPropagation();
       this.$refs.agreement.open(text);
     },
     getAgreementList(h, item) {
@@ -28,7 +28,7 @@ export default {
                 {titleText.title && (
                   <span
                     style={{ color: item.agreementColor }}
-                    onClick={e => { e.stopPropagation(); this.openAgreement(titleText.title, titleText.text) }}
+                    onClick={event => this.openAgreement(titleText.text, event)}
                   >{titleText.title}</span>
                 )}
               </span>
