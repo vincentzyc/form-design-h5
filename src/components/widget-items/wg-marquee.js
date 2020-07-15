@@ -1,5 +1,3 @@
-
-
 import Utils from '@/utils/index'
 export default {
   props: {
