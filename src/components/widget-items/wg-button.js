@@ -11,6 +11,16 @@ function clickBtn(item) {
   }
 }
 
+function getChildren(h, item) {
+  return item.style.isImgBtn
+    ? <img src={item.style.value} alt="图片按钮" width="100%" onClick={() => clickBtn(item)} />
+    : <button
+      class="wg-button"
+      style={Utils.formatStyle(item.style.btnStyle)}
+      onClick={() => clickBtn(item)}
+    >{item.btnText}</button>
+}
+
 export default {
   functional: true,
   props: {
@@ -21,16 +31,9 @@ export default {
   },
   render(h, context) {
     const { item } = context.props;
-    const children = item.style.isImgBtn ?
-      <img src={item.style.value} alt="图片按钮" width="100%" onClick={() => clickBtn(item)} />
-      : <button
-        class="wg-button"
-        style={Utils.formatStyle(item.style.btnStyle)}
-        onClick={() => clickBtn(item)}
-      >{item.btnText}</button>
     return (
       <div class="flex flex-center" style={Utils.formatStyle(item.style)}>
-        {children}
+        {getChildren(h, item)}
       </div >
     )
   }
