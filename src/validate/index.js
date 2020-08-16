@@ -79,6 +79,14 @@ const ruleList = {
   agreement: value => {
     if (!value) return '请勾选同意相关协议';
     return true;
+  },
+  randomCode: (value, item) => {
+    if (!value) return '请输入验证码';
+    if (item.value.toUpperCase() !== item.codeValue.toUpperCase()) {
+      item.getCode()
+      return '验证码错误';
+    }
+    return true
   }
 }
 
@@ -92,7 +100,7 @@ export function valiDate(obj) {
     }
   }
   if (obj.isRequired === false && (obj.value === '' || obj.value === false)) return true;
-  return ruleList[obj.apiKey](obj.value)
+  return ruleList[obj.apiKey](obj.value,obj)
 }
 
 
@@ -138,7 +146,7 @@ function valiAllDate(list) {
 }
 
 function formatParam(item) {
-  if (!Object.prototype.hasOwnProperty.call(item,'apiKey')) return;
+  if (!Object.prototype.hasOwnProperty.call(item, 'apiKey')) return;
   if (item.type === 'phone' && item.showCode) {
     formData[item.codeKey] = item.codeValue;
   }
