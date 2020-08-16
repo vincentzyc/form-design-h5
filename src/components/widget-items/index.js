@@ -13,6 +13,8 @@ import WgMarquee from './wg-marquee'
 import WgAgreement from './wg-agreement'
 import WgMarqueeSingle from './wg-marquee-single'
 import WgVideoPlay from './wg-video-play'
+import WgRandomCode from './wg-random-code'
+
 
 export default {
   name: "widgetItems",
@@ -32,6 +34,7 @@ export default {
     WgAgreement,
     WgMarqueeSingle,
     WgVideoPlay,
+    WgRandomCode
   },
   props: {
     item: {
@@ -59,6 +62,7 @@ export default {
         agreement: 'WgAgreement',
         marqueeSingle: 'WgMarqueeSingle',
         videoPlay: 'WgVideoPlay',
+        randomCode: 'WgRandomCode',
         sms: () => import("./wg-sms"),
       }
     }
