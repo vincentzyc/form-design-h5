@@ -11,13 +11,14 @@ import store from './store';  // 状态管理实例，用于组件通信（项�
 
 import VueClipboard from 'vue-clipboard2'
 
-import { Popup, Lazyload, Dialog } from 'vant';
+import { Popup, Lazyload, Dialog, Toast } from 'vant';
 
 Vue.prototype.$api = Api;
 Vue.prototype.$util = Util;
 
 Vue.use(Popup)
 Vue.use(Dialog);
+Vue.use(Toast);
 
 Vue.use(Lazyload, {
   lazyComponent: true,
