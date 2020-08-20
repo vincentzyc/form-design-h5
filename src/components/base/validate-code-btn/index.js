@@ -49,18 +49,12 @@ export default {
           this.disbtn = false;
         }
       );
-      this.$createToast({
-        txt: '验证码已发送',
-        type: 'txt'
-      }).show();
+      this.$toast('验证码已发送')
     },
     getCode() {
       if (this.disbtn) return;
       if (!(/^1[3-9]\d{9}$/.test(this.phone))) {
-        this.$createToast({
-          txt: '请输入正确的手机号',
-          type: 'txt'
-        }).show();
+        this.$toast('请输入正确的手机号');
         return;
       }
       this.$loading.open('正在发送...');
