@@ -100,13 +100,13 @@ export function valiDate(obj) {
     }
   }
   if (obj.isRequired === false && (obj.value === '' || obj.value === false)) return true;
-  return ruleList[obj.apiKey](obj.value,obj)
+  return ruleList[obj.apiKey](obj.value, obj)
 }
 
 
 export function handleSubmit() {
   let valiDateRes = valiAllDate(vm.BUS.pageData.list);
-  if (valiDateRes !== true) return vm.$createToast({ txt: valiDateRes, type: 'txt', time: 2000 }).show()
+  if (valiDateRes !== true) return vm.$toast(valiDateRes)
   submit(formData);
 }
 
@@ -119,11 +119,9 @@ export function submit(data) {
   });
   setTimeout(() => {
     vm.$loading.close();
-    vm.$createDialog({
-      type: 'alert',
-      title: '提示',
-      content: '提交成功'
-    }).show()
+    vm.$dialog.alert({
+      message: '提交成功'
+    })
   }, 2500);
 }
 
