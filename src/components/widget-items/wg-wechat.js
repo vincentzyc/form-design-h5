@@ -8,19 +8,15 @@ export default {
   methods: {
     copy() {
       this.$copyText(this.item.wechatName).then(() => {
-        this.$createDialog({
-          type: 'alert',
+        this.$dialog.alert({
           title: '复制成功',
-          content: '请在微信粘贴搜索',
-          icon: 'cubeic-right',
-          onConfirm: () => this.confirm()
-        }).show()
+          message: '请在微信粘贴搜索'
+        }).then(() => this.confirm())
       }, () => {
-        this.$createDialog({
-          type: 'alert',
+        this.$dialog.alert({
           title: '很抱歉',
-          content: '您的浏览器不支持自动复制公众号，请手动复制后打开微信搜索'
-        }).show()
+          message: '您的浏览器不支持自动复制公众号，请手动复制后打开微信搜索'
+        })
       })
     },
     confirm() {

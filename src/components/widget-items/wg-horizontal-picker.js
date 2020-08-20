@@ -2,9 +2,6 @@ import Utils from '@/utils/index'
 import HorizontalPicker from "@/components/base/horizontal-picker"
 
 export default {
-  // components: {
-  //   'horizontal-picker': HorizontalPicker
-  // },
   props: {
     item: {
       type: Object,
