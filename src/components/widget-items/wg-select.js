@@ -1,4 +1,5 @@
 import Utils from '@/utils/index'
+import { Picker } from 'vant';
 
 export default {
   props: {
@@ -9,25 +10,20 @@ export default {
   },
   data() {
     return {
-      column: []
+      showPicker: false
     }
   },
   methods: {
-    showPicker() {
-      if (!this.picker) {
-        this.picker = this.$createPicker({
-          data: [this.column],
-          onSelect: this.selectHandle
-        })
-      }
-      this.picker.show()
+    openPicker() {
+      this.showPicker = true
     },
-    selectHandle(selectedVal) {
-      this.item.value = selectedVal[0]
+    closePicker() {
+      this.showPicker = false
+    },
+    onConfirm(value) {
+      this.item.value = value;
+      this.showPicker = false
     }
-  },
-  created() {
-    this.column = this.item.options.map(v => ({ text: v, value: v }))
   },
   render() {
     const { item } = this;
@@ -39,7 +35,7 @@ export default {
           v-show={item.showLabel}
           style={{ width: Utils.changeRem(item.label.labelwidth) }}
         >{item.label.labelTitle}</div>
-        <div class="flex-auto disabled-input" onClick={this.showPicker}>
+        <div class="flex-auto disabled-input" onClick={this.openPicker}>
           <input
             disabled
             id={item.key}
@@ -48,6 +44,14 @@ export default {
             class="wg-input" />
           <i class="cubeic-select"></i>
         </div>
+        <van-popup v-model={this.showPicker} round position="bottom">
+          <Picker
+            show-toolbar
+            columns={this.item.options}
+            onCancel={this.closePicker}
+            onConfirm={this.onConfirm}
+          />
+        </van-popup>
       </div>
     )
   }
