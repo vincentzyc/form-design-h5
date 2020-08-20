@@ -7,7 +7,7 @@ import {
   /* eslint-disable no-unused-vars */
   Style,
   // basic
-  Button,
+  // Button,
   // Loading,
   // Tip,
   // Toolbar,
@@ -28,13 +28,13 @@ import {
   // Form,
   // // popup
   // Popup,
-  Toast,
+  // Toast,
   Picker,
   // CascadePicker,
   // DatePicker,
   // TimePicker,
   // SegmentPicker,
-  Dialog,
+  // Dialog,
   // ActionSheet,
   // Drawer,
   // ImagePreview,
@@ -48,7 +48,7 @@ import {
   // ScrollNavBar
 } from 'cube-ui'
 
-Vue.use(Button)
+// Vue.use(Button)
 // Vue.use(Loading)
 // Vue.use(Tip)
 // Vue.use(Toolbar)
@@ -67,13 +67,13 @@ Vue.use(Button)
 // Vue.use(Upload)
 // Vue.use(Form)
 // Vue.use(Popup)
-Vue.use(Toast)
+// Vue.use(Toast)
 Vue.use(Picker)
 // Vue.use(CascadePicker)
 // Vue.use(DatePicker)
 // Vue.use(TimePicker)
 // Vue.use(SegmentPicker)
-Vue.use(Dialog)
+// Vue.use(Dialog)
 // Vue.use(ActionSheet)
 // Vue.use(Drawer)
 // Vue.use(ImagePreview)
