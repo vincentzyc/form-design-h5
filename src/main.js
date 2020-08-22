@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import './plugins/axios'
-import './cube-ui'
 import Api from './api';
 import Util from './utils';
 import "./components/base";
