@@ -1,6 +1,6 @@
 
 <template>
-  <cube-scroll
+  <Scroll
     ref="scroll"
     direction="horizontal"
     class="horizontal-scroll-list-wrap"
@@ -22,16 +22,20 @@
       </div>
       <div class="picker-item" :style="{width: itemWidth * (showNumber - 1) / 2 + 'px'}"></div>
     </div>
-  </cube-scroll>
+  </Scroll>
 </template>
 
 <script type="text/ecmascript-6">
+import { Scroll } from 'cube-ui'
 
 const ITEM_WIDTH = 48;
 const SHOW_NUMBER = 5;
 
 export default {
   name: "HorizontalPicker",
+  components: {
+    Scroll
+  },
   props: {
     value: {
       type: [String, Number],
