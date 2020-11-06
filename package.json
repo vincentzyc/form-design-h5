@@ -11,7 +11,7 @@
     "core-js": "^3.6.5",
     "cube-ui": "~1.12.1",
     "vant": "^2.9.0",
-    "vue": "^2.6.11",
+    "vue": "^2.6.12",
     "vue-clipboard2": "^0.3.1"
   },
   "devDependencies": {
@@ -30,7 +30,7 @@
     "stylus-loader": "^3.0.2",
     "vue-cli-plugin-axios": "0.0.4",
     "vue-cli-plugin-cube-ui": "^0.2.4",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   },
   "transformModules": {
     "cube-ui": {
