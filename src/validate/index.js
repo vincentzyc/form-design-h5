@@ -105,7 +105,7 @@ export function valiDate(obj) {
 
 
 export function handleSubmit() {
-  let valiDateRes = valiAllDate(vm.BUS.pageData.list);
+  let valiDateRes = vm.BUS.valiPopupDate ? valiPopupDate(vm.BUS.pageData.list) : valiAllDate(vm.BUS.pageData.list);
   if (valiDateRes !== true) return vm.$toast(valiDateRes)
   submit(formData);
 }
@@ -125,10 +125,23 @@ export function submit(data) {
   }, 2500);
 }
 
-function valiAllDate(list) {
+function valiPopupDate(list) {
   for (const item of list) {
-    if (item.type === "formList") {
-      let res = valiAllDate(item.list);
+    if (Array.isArray(item.list) && item.list.length > 0) {
+      let res = valiPopupDate(item.list, false);
+      if (res !== true) return res;
+    }
+    if (Array.isArray(item.popupList) && item.popupList.length > 0 && item.showPopup) {
+      return valiAllDate(item.popupList, false);
+    }
+  }
+  return true;
+}
+
+function valiAllDate(list, scrollIntoView = true) {
+  for (const item of list) {
+    if (Array.isArray(item.list) && item.list.length > 0) {
+      let res = valiAllDate(item.list, scrollIntoView);
       if (res !== true) return res;
     }
     if (!item.apiKey) continue;
@@ -137,7 +150,7 @@ function valiAllDate(list) {
       formatParam(item);
       continue
     }
-    vm.$util.scrollIntoView(document.getElementById(item.key))
+    if (scrollIntoView) vm.$util.scrollIntoView(document.getElementById(item.key))
     return res;
   }
   return true;
