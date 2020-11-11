@@ -12,7 +12,7 @@ export default {
     handleClick() {
       if (this.item.link) return Utils.jumpLink(this.item.link)
       if (this.item.popupList?.length > 0) {
-        this.$refs.customPopup.open();
+        this.item.showPopup = true
       }
     }
   },
@@ -28,7 +28,7 @@ export default {
         style={domStyle}
       >
         <p style={Utils.formatStyle(item.style)} domPropsInnerHTML={Utils.changeRem(item.value)} onClick={() => this.handleClick()}></p>
-        <CustomPopup ref="customPopup" list={item.popupList || []} />
+        <CustomPopup list={item.popupList || []} vModel={this.item.showPopup} />
       </div>
     )
   }
