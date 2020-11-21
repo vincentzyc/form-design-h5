@@ -40,22 +40,98 @@
 /* 重置cube-ui样式 end*/
 
 /*  动画类 */
-@keyframes marquee-up {
-  0% {
-    transform: translateY(0);
-  }
 
-  100% {
-    transform: translateY(-50%);
-  }
+.animte-streak {
+	position: relative;
+	overflow: hidden;
+}
+
+.animte-streak .animte-el {
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	height: 150%;
+	box-shadow: 0 0 35px 10px rgb(255, 255, 255);
+	transform: rotate(20deg);
+}
+@keyframes marquee-up {
+	0% {
+		transform: translateY(0);
+	}
+
+	100% {
+		transform: translateY(-50%);
+	}
 }
 
 @keyframes marquee-left {
-  0% {
-    transform: translateX(0);
-  }
+	0% {
+		transform: translateX(0);
+	}
 
-  100% {
-    transform: translateX(-50%);
-  }
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes animte-breathlamp {
+	0%, 50%, to {
+		transform: scale(0.8);
+	}
+
+	25%, 75% {
+		transform: scale(1);
+	}
+}
+
+@keyframes animte-fade {
+	0%, 50%, to {
+		opacity: 1;
+	}
+
+	25%, 75% {
+		opacity: 0.5;
+	}
+}
+
+@keyframes animte-flash {
+	0%, 50%, to {
+		opacity: 1;
+	}
+
+	25%, 75% {
+		opacity: 0;
+	}
+}
+
+@keyframes animte-streak {
+	0%, 30% {
+		left: 0%;
+		opacity: 0;
+	}
+
+	40% {
+		left: 10%;
+		opacity: 0.2;
+	}
+
+	60% {
+		left: 50%;
+		opacity: 1;
+	}
+
+	80% {
+		left: 80%;
+		opacity: 1;
+	}
+
+	95% {
+		left: 92%;
+		opacity: 0.2;
+	}
+
+	100% {
+		left: 100%;
+		opacity: 0;
+	}
 }
