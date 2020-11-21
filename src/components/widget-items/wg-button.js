@@ -31,8 +31,27 @@ export default {
   },
   render(h, context) {
     const { item } = context.props;
+    const wrapStyle = () => {
+      if (!item.animation) return Utils.formatStyle(item.style)
+      return Utils.formatStyle({
+        ...item.style,
+        ...item.animation
+      })
+    }
+    const animteStyle = () => {
+      if (!item.animation?.className) return { display: 'none' }
+      return {
+        ...item.animation,
+        animationName: item.animation.className
+      }
+    }
+    const wrapClass = () => {
+      if (!item.animation) return ''
+      return item.animation.className
+    }
     return (
-      <div class="flex flex-center" style={Utils.formatStyle(item.style)}>
+      <div class="flex flex-center" class={wrapClass()} style={wrapStyle()}>
+        <span style={animteStyle()} class="animte-el"></span>
         {getChildren(h, item)}
       </div >
     )
