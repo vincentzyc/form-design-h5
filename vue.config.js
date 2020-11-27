@@ -1,7 +1,6 @@
 module.exports = {
   publicPath: "./",
   outputDir: "docs",
-  // assetsDir: 'static' + process.env.npm_package_version,
   productionSourceMap: false,
 
   configureWebpack: {
