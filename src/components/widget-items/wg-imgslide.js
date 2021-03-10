@@ -23,7 +23,7 @@ export default {
     return (
       <div class="wg-imgslide">
         <div style={wrapSlideStyle}>
-          <Swipe autoplay={0} style={slideContentStyle}>
+          <Swipe autoplay={item.interval} style={slideContentStyle}>
             {vantSwipeItem}
           </Swipe>
         </div>
