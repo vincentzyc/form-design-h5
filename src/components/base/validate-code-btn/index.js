@@ -7,7 +7,6 @@ export default {
   },
   data() {
     return {
-      code: "",
       codetxt: "获取验证码",
       time: "",
       disbtn: false
