@@ -15,7 +15,7 @@ export default {
     return (
       <div id={item.key} class={wrapClass} style={item.style}>
         <div class="wg-title" style={titleStyle}>{item.label.labelTitle}</div>
-        <div class="flex-auto" id={item.key}>
+        <div class="flex-auto">
           <HorizontalPicker
             vModel={item.value}
             style="margin: 0 auto;"
