@@ -18,7 +18,10 @@ export default {
           style={{ width: Utils.changeRem(item.label.labelWidth) }}
         >{item.label.labelTitle}</div>
         <div class="flex-auto">
-          <input vModel={item.value} placeholder={item.placeholder} class="wg-input" id={item.key} />
+          {item.isTextarea ?
+            <textarea vModel={item.value} placeholder={item.placeholder} class="wg-textarea" /> :
+            <input vModel={item.value} placeholder={item.placeholder} class="wg-input" id={item.key} />
+          }
         </div>
       </div>
     )
