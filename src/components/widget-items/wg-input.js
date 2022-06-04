@@ -19,7 +19,7 @@ export default {
         >{item.label.labelTitle}</div>
         <div class="flex-auto">
           {item.isTextarea ?
-            <textarea vModel={item.value} placeholder={item.placeholder} class="wg-textarea" /> :
+            <textarea vModel={item.value} placeholder={item.placeholder} class="wg-textarea" id={item.key} /> :
             <input vModel={item.value} placeholder={item.placeholder} class="wg-input" id={item.key} />
           }
         </div>
