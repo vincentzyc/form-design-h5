@@ -14,6 +14,7 @@ import WgAgreement from './wg-agreement'
 import WgMarqueeSingle from './wg-marquee-single'
 import WgVideoPlay from './wg-video-play'
 import WgRandomCode from './wg-random-code'
+import WgCountDown from './wg-count-down'
 
 
 export default {
@@ -34,7 +35,8 @@ export default {
     WgAgreement,
     WgMarqueeSingle,
     WgVideoPlay,
-    WgRandomCode
+    WgRandomCode,
+    WgCountDown
   },
   props: {
     item: {
@@ -64,6 +66,7 @@ export default {
         videoPlay: 'WgVideoPlay',
         randomCode: 'WgRandomCode',
         sms: () => import("./wg-sms"),
+        countDown: () => import("./wg-count-down"),
       }
     }
   },
