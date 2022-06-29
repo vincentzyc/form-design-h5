@@ -46,11 +46,11 @@ export default {
       }
     }
     const wrapClass = () => {
-      if (!item.animation) return ''
-      return item.animation.className
+      if (!item.animation) return 'flex flex-center'
+      return `flex flex-center ${item.animation.className}`
     }
     return (
-      <div class="flex flex-center" class={wrapClass()} style={wrapStyle()}>
+      <div class={wrapClass()} style={wrapStyle()}>
         <span style={animteStyle()} class="animte-el"></span>
         {getChildren(h, item)}
       </div >
