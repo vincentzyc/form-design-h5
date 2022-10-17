@@ -15,7 +15,7 @@ import WgMarqueeSingle from './wg-marquee-single'
 import WgVideoPlay from './wg-video-play'
 import WgRandomCode from './wg-random-code'
 import WgCountDown from './wg-count-down'
-
+import WgDragVerify from './wg-drag-verify'
 
 export default {
   name: "widgetItems",
@@ -36,7 +36,8 @@ export default {
     WgMarqueeSingle,
     WgVideoPlay,
     WgRandomCode,
-    WgCountDown
+    WgCountDown,
+    WgDragVerify
   },
   props: {
     item: {
@@ -65,6 +66,7 @@ export default {
         marqueeSingle: 'WgMarqueeSingle',
         videoPlay: 'WgVideoPlay',
         randomCode: 'WgRandomCode',
+        dragVerify: 'WgDragVerify',
         sms: () => import("./wg-sms"),
         countDown: () => import("./wg-count-down"),
       }
