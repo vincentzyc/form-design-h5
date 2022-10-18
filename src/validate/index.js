@@ -87,7 +87,11 @@ const ruleList = {
       return '验证码错误';
     }
     return true
-  }
+  },
+  dragVerify: value => {
+    if (!value) return '请按住滑块拖动校验';
+    return true;
+  },
 }
 
 export function valiDate(obj) {
