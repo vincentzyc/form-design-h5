@@ -5,8 +5,6 @@
       :isPassing.sync="item.value"
       :text="item.placeholder"
       :successText="item.successText"
-      handlerIcon="el-icon-d-arrow-right"
-      successIcon="el-icon-circle-check"
     />
   </div>
 </template>
@@ -22,6 +20,6 @@ export default {
       type: Object,
       required: true,
     },
-  }
+  },
 };
 </script>
