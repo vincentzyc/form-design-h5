@@ -1,6 +1,6 @@
 module.exports = {
   presets: [
-    '@vue/app'
+    '@vue/cli-plugin-babel/preset'
   ],
   "plugins": [
     [
@@ -11,7 +11,6 @@ module.exports = {
         "style": true
       },
       "vant"
-    ],
-    ["@babel/plugin-proposal-optional-chaining"]  //可选链语法
+    ]
   ]
 }
