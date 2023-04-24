@@ -12,28 +12,12 @@ module.exports = defineConfig({
     } : {}
   },
 
-  // chainWebpack: config => {
-  //   config.plugins.delete('preload')
-  //   config.plugins.delete('prefetch')
-  // },
+  chainWebpack: config => {
+    config.plugins.delete('preload')
+    config.plugins.delete('prefetch')
+  },
 
   devServer: {
     port: 9010,
-  },
-  // css: {
-  //   loaderOptions: {
-  //     stylus: {
-  //       'resolve url': true,
-  //       'import': [
-  //         './src/theme'
-  //       ]
-  //     }
-  //   }
-  // },
-  // pluginOptions: {
-  //   'cube-ui': {
-  //     postCompile: true,
-  //     theme: true
-  //   }
-  // }
+  }
 });
