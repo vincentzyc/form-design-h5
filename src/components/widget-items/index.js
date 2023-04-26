@@ -59,7 +59,7 @@ export default {
         staticText: 'WgStaticText',
         imgShow: 'WgImgShow',
         imgSlide: () => import("./wg-imgslide"),
-        // hPicker: () => import("./wg-horizontal-picker"),
+        hPicker: () => import("./wg-horizontal-picker"),
         wechat: 'WgWechat',
         marquee: 'WgMarquee',
         agreement: 'WgAgreement',
