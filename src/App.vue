@@ -4,12 +4,6 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Home from '@/views/home'
-export default {
-  name: "app",
-  components: {
-    Home
-  }
-}
 </script>
