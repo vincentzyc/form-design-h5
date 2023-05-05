@@ -1,16 +1,16 @@
 <template>
   <transition name="fade">
     <div class="yun-loading" v-show="visible">
-      <div class="yun-loading-wrapper" :style="{ 'padding': text ? '20px' : '15px' }">
-        <span class="yun-loading-spin" v-if="type==='snake'">
+      <div class="yun-loading-wrapper" :style="{ padding: text ? '20px' : '15px' }">
+        <span class="yun-loading-spin" v-if="type === 'snake'">
           <div class="yun-snake"></div>
         </span>
-        <div class="yun-triple-bounce" v-else-if="type==='triple-bounce'">
+        <div class="yun-triple-bounce" v-else-if="type === 'triple-bounce'">
           <div class="yun-triple-bounce-bounce1"></div>
           <div class="yun-triple-bounce-bounce2"></div>
           <div class="yun-triple-bounce-bounce3"></div>
         </div>
-        <v-sandglass v-else/>
+        <Sandglass v-else />
         <span class="yun-loading-text" v-show="text">{{ text }}</span>
       </div>
       <div class="yun-loading-mask" @touchmove.stop.prevent></div>
@@ -18,7 +18,7 @@
   </transition>
 </template>
 
-<script>
+<script setup>
 /**
  * 使用方法
  *  this.$loading.open({
@@ -27,25 +27,20 @@
     });
  *  this.$loading.close();
  */
-import sandglass from "./sandglass";
-export default {
-  components: {
-    "v-sandglass": sandglass
+import Sandglass from './sandglass';
+import { ref } from 'vue';
+
+const visible = ref(false);
+
+defineProps({
+  text: String,
+  type: {
+    type: String,
+    default: 'snake',
   },
-  data () {
-    return {
-      visible: false
-    };
-  },
-  props: {
-    text: String,
-    type: {
-      type: String,
-      default: "snake"
-    }
-  }
-};
+});
 </script>
+
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
