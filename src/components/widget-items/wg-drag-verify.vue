@@ -9,17 +9,13 @@
   </div>
 </template>
 
-<script>
-import DragVerify from "@/components/base/DragVerify.vue";
-export default {
-  components: {
-    DragVerify,
+<script setup>
+import DragVerify from '@/components/base/DragVerify.vue';
+
+defineProps({
+  item: {
+    type: Object,
+    required: true,
   },
-  props: {
-    item: {
-      type: Object,
-      required: true,
-    },
-  },
-};
+});
 </script>
