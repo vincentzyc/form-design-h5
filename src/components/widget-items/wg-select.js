@@ -37,12 +37,11 @@ export default {
         >{item.label.labelTitle}</div>
         <div class="flex-auto disabled-input" onClick={this.openPicker}>
           <input
-            disabled
+            readonly
             id={item.key}
             vModel={item.value}
             placeholder={item.placeholder}
             class="wg-input" />
-          <i class="cubeic-select"></i>
         </div>
         <van-popup v-model={this.showPicker} round position="bottom">
           <Picker
