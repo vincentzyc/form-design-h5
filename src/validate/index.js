@@ -28,7 +28,7 @@ const ruleList = {
     return '邮箱格式不正确'
   },
   shootPlace: value => {
-    if (value.length > 0) return '请选择旅拍城市';
+    if (value.length === 0) return '请选择旅拍城市';
     return true;
   },
   sex: value => {
