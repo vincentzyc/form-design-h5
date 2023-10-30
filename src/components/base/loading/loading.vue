@@ -18,7 +18,7 @@
   </transition>
 </template>
 
-<script setup>
+<script>
 /**
  * 使用方法
  *  this.$loading.open({
@@ -28,17 +28,23 @@
  *  this.$loading.close();
  */
 import Sandglass from './sandglass';
-import { ref } from 'vue';
-
-const visible = ref(false);
-
-defineProps({
-  text: String,
-  type: {
-    type: String,
-    default: 'snake',
+export default {
+  components: {
+    Sandglass,
   },
-});
+  data() {
+    return {
+      visible: false,
+    };
+  },
+  props: {
+    text: String,
+    type: {
+      type: String,
+      default: 'snake',
+    },
+  },
+};
 </script>
 
 <style scoped>
