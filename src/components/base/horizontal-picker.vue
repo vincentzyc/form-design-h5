@@ -29,7 +29,7 @@ const SHOW_NUMBER = 5;
 export default defineComponent({
   name: 'HorizontalPicker',
   props: {
-    modelValue: {
+    value: {
       type: [String, Number],
       default: '',
     },
@@ -62,7 +62,7 @@ export default defineComponent({
       default: 0,
     },
   },
-  emits: ['update:modelValue'],
+  emits: ['input'],
   setup(props, { emit }) {
     let bs = null;
     const wgWrapper = ref(),
@@ -92,7 +92,7 @@ export default defineComponent({
       currentIndex.value = Math.floor(scrollNewX / props.itemWidth);
       scrollX.value = -currentIndex.value * props.itemWidth;
       bs.scrollTo(scrollX.value, 0, 100);
-      emit('update:modelValue', currentValue.value);
+      emit('input', currentValue.value);
     };
     const touchEnd = pos => {
       draging.value = false;
@@ -120,7 +120,7 @@ export default defineComponent({
       if (props.defaultIndex > 0) {
         currentIndex.value = props.defaultIndex;
         bs.scrollTo(-currentIndex.value * props.itemWidth, 0);
-        emit('update:modelValue', currentValue.value);
+        emit('input', currentValue.value);
       }
     };
 
@@ -129,7 +129,7 @@ export default defineComponent({
       currentIndex.value = key;
       scrollX.value = -currentIndex.value * props.itemWidth;
       bs.scrollTo(scrollX.value, 0, 150);
-      emit('update:modelValue', currentValue.value);
+      emit('input', currentValue.value);
     };
     const activeItem = item => ({
       width: props.itemWidth + 'px',
